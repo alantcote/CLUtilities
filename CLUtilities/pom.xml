@@ -32,15 +32,15 @@
 	</properties>
 
 	<distributionManagement>
-    <repository>
-      <id>github</id>
-      <name>alantcote</name>
-      <url>https://maven.pkg.github.com/alantcote/CLUtilities</url>
-    </repository>
-<!-- 		<snapshotRepository> -->
-<!-- 			<id>test-repo</id> -->
-<!-- 			<url>https://oss.sonatype.org/content/repositories/snapshots</url> -->
-<!-- 		</snapshotRepository> -->
+		<repository>
+			<id>github</id>
+			<name>alantcote</name>
+			<url>https://maven.pkg.github.com/alantcote/CLUtilities</url>
+		</repository>
+		<snapshotRepository>
+			<id>test-repo</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
 	</distributionManagement>
 
 	<description>Classes related to decks of playing cards.</description>
@@ -98,21 +98,21 @@
 					<target>1.7</target>
 				</configuration>
 			</plugin>
-<!-- 			dummy out gpg until the actions enigma can be solved -->
-<!-- 			<plugin> -->
-<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
-<!-- 				<artifactId>maven-gpg-plugin</artifactId> -->
-<!-- 				<version>1.5</version> -->
-<!-- 				<executions> -->
-<!-- 					<execution> -->
-<!-- 						<id>sign-artifacts</id> -->
-<!-- 						<phase>verify</phase> -->
-<!-- 						<goals> -->
-<!-- 							<goal>sign</goal> -->
-<!-- 						</goals> -->
-<!-- 					</execution> -->
-<!-- 				</executions> -->
-<!-- 			</plugin> -->
+			<!-- dummy out gpg until the actions enigma can be solved -->
+			<!-- <plugin> -->
+			<!-- <groupId>org.apache.maven.plugins</groupId> -->
+			<!-- <artifactId>maven-gpg-plugin</artifactId> -->
+			<!-- <version>1.5</version> -->
+			<!-- <executions> -->
+			<!-- <execution> -->
+			<!-- <id>sign-artifacts</id> -->
+			<!-- <phase>verify</phase> -->
+			<!-- <goals> -->
+			<!-- <goal>sign</goal> -->
+			<!-- </goals> -->
+			<!-- </execution> -->
+			<!-- </executions> -->
+			<!-- </plugin> -->
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -142,17 +142,17 @@
 				</executions>
 			</plugin>
 
-<!-- 			<plugin> -->
-<!-- 				<groupId>org.sonatype.plugins</groupId> -->
-<!-- 				<artifactId>nexus-staging-maven-plugin</artifactId> -->
-<!-- 				<version>1.6.2</version> -->
-<!-- 				<extensions>true</extensions> -->
-<!-- 				<configuration> -->
-<!-- 					<serverId>ossrh</serverId> -->
-<!-- 					<nexusUrl>https://oss.sonatype.org/</nexusUrl> -->
-<!-- 					<autoReleaseAfterClose>true</autoReleaseAfterClose> -->
-<!-- 				</configuration> -->
-<!-- 			</plugin> -->
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<version>1.6.8</version>
+				<extensions>true</extensions>
+				<configuration>
+					<serverId>ossrh</serverId>
+					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+					<autoReleaseAfterClose>true</autoReleaseAfterClose>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
@@ -189,7 +189,7 @@
 		<dependency>
 			<groupId>org.jmock</groupId>
 			<artifactId>jmock-legacy</artifactId>
-			<version>2.11.0</version>
+			<version>2.12.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hamcrest</groupId>
