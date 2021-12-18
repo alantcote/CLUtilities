@@ -33,8 +33,8 @@
 
 	<distributionManagement>
 		<snapshotRepository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+			<id>test-repo</id>
+			<url>https://github.com/alantcote/test-repo.git</url>
 		</snapshotRepository>
 	</distributionManagement>
 
@@ -137,17 +137,17 @@
 				</executions>
 			</plugin>
 
-			<plugin>
-				<groupId>org.sonatype.plugins</groupId>
-				<artifactId>nexus-staging-maven-plugin</artifactId>
-				<version>1.6.2</version>
-				<extensions>true</extensions>
-				<configuration>
-					<serverId>ossrh</serverId>
-					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
-					<autoReleaseAfterClose>true</autoReleaseAfterClose>
-				</configuration>
-			</plugin>
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.sonatype.plugins</groupId> -->
+<!-- 				<artifactId>nexus-staging-maven-plugin</artifactId> -->
+<!-- 				<version>1.6.2</version> -->
+<!-- 				<extensions>true</extensions> -->
+<!-- 				<configuration> -->
+<!-- 					<serverId>ossrh</serverId> -->
+<!-- 					<nexusUrl>https://oss.sonatype.org/</nexusUrl> -->
+<!-- 					<autoReleaseAfterClose>true</autoReleaseAfterClose> -->
+<!-- 				</configuration> -->
+<!-- 			</plugin> -->
 		</plugins>
 	</build>
 
