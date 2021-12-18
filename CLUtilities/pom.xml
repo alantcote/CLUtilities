@@ -32,10 +32,15 @@
 	</properties>
 
 	<distributionManagement>
-		<snapshotRepository>
-			<id>test-repo</id>
-			<url>https://github.com/alantcote/test-repo.git</url>
-		</snapshotRepository>
+    <repository>
+      <id>github</id>
+      <name>alantcote</name>
+      <url>https://maven.pkg.github.com/alantcote/CLUtilities</url>
+    </repository>
+<!-- 		<snapshotRepository> -->
+<!-- 			<id>test-repo</id> -->
+<!-- 			<url>https://oss.sonatype.org/content/repositories/snapshots</url> -->
+<!-- 		</snapshotRepository> -->
 	</distributionManagement>
 
 	<description>Classes related to decks of playing cards.</description>
