@@ -49,7 +49,7 @@
 
 	<scm>
 		<url>https://github.com/alantcote/${project.artifactId}</url>
-		<connection>scm:git:https://github.com/alantcote/${project.artifactId}</connection>
+		<connection>scm:git:https://github.com/alantcote/${project.artifactId}.git</connection>
 	</scm>
 
 	<issueManagement>
