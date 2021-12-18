@@ -93,7 +93,7 @@
 					<target>1.7</target>
 				</configuration>
 			</plugin>
-
+<!-- 			dummy out gpg until the actions enigma can be solved -->
 <!-- 			<plugin> -->
 <!-- 				<groupId>org.apache.maven.plugins</groupId> -->
 <!-- 				<artifactId>maven-gpg-plugin</artifactId> -->
