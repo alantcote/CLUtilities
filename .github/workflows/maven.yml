@@ -35,6 +35,6 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
       - name: Publish to GitHub Packages
-        run: (pwd; ls -al; cd CLUtilities; pwd; ls -al; mvn --batch-mode install)
+        run: (pwd; ls -al; cd CLUtilities; pwd; ls -al; mvn --batch-mode deploy)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
