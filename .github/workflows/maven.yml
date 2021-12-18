@@ -23,4 +23,4 @@ jobs:
         distribution: 'adopt'
         cache: maven
     - name: Build with Maven
-      run: (cd CLUtilities; mvn -B deploy)
+      run: (cd CLUtilities; mvn -B deploy -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true)
