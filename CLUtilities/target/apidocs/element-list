@@ -1,3 +1,4 @@
+module:clutilities
 net.sf.cotelab.util
 net.sf.cotelab.util.collections
 net.sf.cotelab.util.io
