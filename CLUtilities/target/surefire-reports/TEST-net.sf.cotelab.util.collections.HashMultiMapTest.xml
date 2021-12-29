@@ -25,7 +25,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="user.variant" value=""/>
     <property name="os.name" value="Windows 10"/>
-    <property name="classworlds.conf" value="D:\alant\Projects\Cote\eclipse-2021-workspace\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf16461707497889941313.tmp"/>
+    <property name="classworlds.conf" value="D:\alant\Projects\Cote\eclipse-2021-workspace\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf5531765104969786277.tmp"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
     <property name="java.library.path" value="C:\Program Files\Java\jdk-17.0.1\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files\CollabNet\Subversion Client;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Gpg4win\..\GnuPG\bin;C:\Program Files\Git\cmd;C:\Users\TEST\AppData\Local\Microsoft\WindowsApps;;."/>
     <property name="jdk.debug" value="release"/>
@@ -69,12 +69,12 @@
   <testcase classname="net.sf.cotelab.util.collections.HashMultiMapTest" name="testEqualsObject" time="0"/>
   <testcase classname="net.sf.cotelab.util.collections.HashMultiMapTest" name="testContainsValue" time="0"/>
   <testcase classname="net.sf.cotelab.util.collections.HashMultiMapTest" name="testPutAllMapOfQextendsKQextendsV" time="0"/>
-  <testcase classname="net.sf.cotelab.util.collections.HashMultiMapTest" name="testPutAllKCollectionOfQextendsV" time="0"/>
+  <testcase classname="net.sf.cotelab.util.collections.HashMultiMapTest" name="testPutAllKCollectionOfQextendsV" time="0.001"/>
   <testcase classname="net.sf.cotelab.util.collections.HashMultiMapTest" name="testHashCode" time="0"/>
   <testcase classname="net.sf.cotelab.util.collections.HashMultiMapTest" name="testKeySet" time="0"/>
   <testcase classname="net.sf.cotelab.util.collections.HashMultiMapTest" name="testHashMultiMapMultiMapOfQextendsKQextendsV" time="0"/>
   <testcase classname="net.sf.cotelab.util.collections.HashMultiMapTest" name="testIsEmpty" time="0"/>
   <testcase classname="net.sf.cotelab.util.collections.HashMultiMapTest" name="testRemove" time="0"/>
-  <testcase classname="net.sf.cotelab.util.collections.HashMultiMapTest" name="testValues" time="0.001"/>
+  <testcase classname="net.sf.cotelab.util.collections.HashMultiMapTest" name="testValues" time="0"/>
   <testcase classname="net.sf.cotelab.util.collections.HashMultiMapTest" name="testRemoveKey" time="0"/>
 </testsuite>
