@@ -29,6 +29,8 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<javafx.classifier>win</javafx.classifier>
+		<openjfx.version>18-ea+8</openjfx.version>
 	</properties>
 
 	<distributionManagement>
@@ -228,6 +230,55 @@
 			<artifactId>hamcrest-library</artifactId>
 			<version>2.2</version>
 			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-base</artifactId>
+			<version>${openjfx.version}</version>
+			<classifier>${javafx.classifier}</classifier>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-controls</artifactId>
+			<version>${openjfx.version}</version>
+			<classifier>${javafx.classifier}</classifier>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-fxml</artifactId>
+			<version>${openjfx.version}</version>
+			<classifier>${javafx.classifier}</classifier>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-graphics</artifactId>
+			<version>${openjfx.version}</version>
+			<classifier>${javafx.classifier}</classifier>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-media</artifactId>
+			<version>${openjfx.version}</version>
+			<classifier>${javafx.classifier}</classifier>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-swing</artifactId>
+			<version>${openjfx.version}</version>
+			<classifier>${javafx.classifier}</classifier>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-web</artifactId>
+			<version>${openjfx.version}</version>
+			<classifier>${javafx.classifier}</classifier>
 		</dependency>
 
 		<dependency>
