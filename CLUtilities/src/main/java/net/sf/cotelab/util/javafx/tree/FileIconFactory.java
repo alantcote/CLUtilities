@@ -24,12 +24,16 @@ public class FileIconFactory {
 
 	public ImageView getIcon(File aFile) {
 		Icon swingIcon = fileSystemView.getSystemIcon(aFile);
-		ImageView imageView = cache.get(swingIcon);
+		ImageView imageView = null;
+		
+		if (swingIcon != null) {
+			imageView = cache.get(swingIcon);
 
-		if (imageView == null) {
-			imageView = getIconImage(swingIcon);
+			if (imageView == null) {
+				imageView = getIconImage(swingIcon);
 
-			cache.put(swingIcon, imageView);
+				cache.put(swingIcon, imageView);
+			}
 		}
 
 		return imageView;

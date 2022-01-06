@@ -43,10 +43,7 @@ public class FileTreeViewDemo extends Application {
 
 	protected TreeView<File> createFileTreeView() {
 		TreeItem<File> rootFileTreeItem = new FileTreeItem(null);
-		TreeView<File> fileTreeView = new TreeView<File>(rootFileTreeItem);
-		FileIconFactory fileIconFactory = new FileIconFactory();
-		
-		fileTreeView.setCellFactory(new FileTreeCellFactory(fileIconFactory));
+		TreeView<File> fileTreeView = new FileTreeView(rootFileTreeItem);
 		
 		return fileTreeView;
 	}
