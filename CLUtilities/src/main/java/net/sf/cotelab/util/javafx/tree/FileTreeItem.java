@@ -5,9 +5,19 @@ import java.io.File;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
 
+/**
+ * A {@link TreeItem} to be used with {@link FileTreeView}.
+ */
 public class FileTreeItem extends TreeItem<File> {
+	/**
+	 * This item's child items.
+	 */
 	protected ObservableList<TreeItem<File>> childItems = null;
 
+	/**
+	 * Construct a new object.
+	 * @param aValue the {@link File} represented by this {@link TreeItem}.
+	 */
 	public FileTreeItem(File aValue) {
 		super(aValue);
 
@@ -20,6 +30,9 @@ public class FileTreeItem extends TreeItem<File> {
 		// an unchanging view of aValue's children, for now.
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public ObservableList<TreeItem<File>> getChildren() {
 		File myFile = getValue();
@@ -34,7 +47,7 @@ public class FileTreeItem extends TreeItem<File> {
 //				System.out.println("FileTreeItem.getChildren(): fsRoots = " + fsRoots);
 
 				for (File fsRoot : fsRoots) {
-					childItems.add(new FileTreeItem(fsRoot));
+					childItems.add(newFileTreeItem(fsRoot));
 				}
 			} else {
 				// normal situation
@@ -45,7 +58,7 @@ public class FileTreeItem extends TreeItem<File> {
 
 					if (kidFiles != null) {
 						for (File kidFile : kidFiles) {
-							childItems.add(new FileTreeItem(kidFile));
+							childItems.add(newFileTreeItem(kidFile));
 						}
 					}
 				}
@@ -57,10 +70,11 @@ public class FileTreeItem extends TreeItem<File> {
 		return childItems;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean isLeaf() {
-		File myFile = getValue(); // at this writing, it's only useful when tracing
-
 //		System.out.println("FileTreeItem.isLeaf(): myFile = " + myFile);
 
 		ObservableList<TreeItem<File>> kids = getChildren();
@@ -72,5 +86,14 @@ public class FileTreeItem extends TreeItem<File> {
 //		System.out.println("FileTreeItem.isLeaf(): myLeaf = " + myLeaf);
 
 		return myLeaf;
+	}
+
+	/**
+	 * A factory for tree items.
+	 * @param aFile the {@link File} wrapped by a new tree item.
+	 * @return the new tree item.
+	 */
+	protected FileTreeItem newFileTreeItem(File aFile) {
+		return new FileTreeItem(aFile);
 	}
 }

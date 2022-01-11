@@ -13,6 +13,9 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+/**
+ * A caching provider of system-authentic icons for files.
+ */
 public class FileIconFactory {
 
 	/**
@@ -20,25 +23,31 @@ public class FileIconFactory {
 	 */
 	public static final FileSystemView fileSystemView = FileSystemView.getFileSystemView();
 
-	protected Hashtable<Icon, ImageView> cache = new Hashtable<Icon, ImageView>();
+	/**
+	 * The cache of {@link ImageView} objects, keyed by {@link Icon} objects.
+	 * 
+	 * This exists because converting the latter to the former is expensive.
+	 */
+	protected Hashtable<Icon, ImageView> cache = newHashtable();
 
+	/**
+	 * Get the system-authentic icon image appropriate for a given file.
+	 * 
+	 * @param aFile the given file.
+	 * @return the icon image.
+	 */
 	public ImageView getIcon(File aFile) {
-		Icon swingIcon = fileSystemView.getSystemIcon(aFile);
-		ImageView imageView = null;
-		
-		if (swingIcon != null) {
-			imageView = cache.get(swingIcon);
+		Icon swingIcon = getSystemIcon(aFile);
 
-			if (imageView == null) {
-				imageView = getIconImage(swingIcon);
-
-				cache.put(swingIcon, imageView);
-			}
-		}
-
-		return imageView;
+		return getImageView(swingIcon);
 	}
 
+	/**
+	 * Convert an {@link Icon} to an {@link ImageView}.
+	 * 
+	 * @param swingIcon the {@link Icon}.
+	 * @return the {@link ImageView}.
+	 */
 	protected ImageView getIconImage(Icon swingIcon) {
 		ImageIcon imageIcon = null;
 
@@ -53,7 +62,7 @@ public class FileIconFactory {
 		if (awtImage instanceof BufferedImage) {
 			bImg = (BufferedImage) awtImage;
 		} else {
-			bImg = new BufferedImage(awtImage.getWidth(null), awtImage.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+			bImg = newBufferedImage(awtImage);
 			Graphics2D graphics = bImg.createGraphics();
 			graphics.drawImage(awtImage, 0, 0, null);
 			graphics.dispose();
@@ -63,6 +72,59 @@ public class FileIconFactory {
 		ImageView imageView = new ImageView(fxImage);
 
 		return imageView;
+	}
+
+	/**
+	 * Get an {@link ImageView} object corresponding to a {@link Icon} object.
+	 * 
+	 * The {@link #cache} is used and/or updated to accomplish this.
+	 * 
+	 * @param swingIcon a {@link Icon} object.
+	 * @return the {@link ImageView} object.
+	 */
+	protected ImageView getImageView(Icon swingIcon) {
+		ImageView imageView = null;
+
+		if (swingIcon != null) {
+			imageView = cache.get(swingIcon);
+
+			if (imageView == null) {
+				imageView = getIconImage(swingIcon);
+
+				cache.put(swingIcon, imageView);
+			}
+		}
+
+		return imageView;
+	}
+
+	/**
+	 * Get the local system-authentic icon for a file.
+	 * 
+	 * @param aFile a file.
+	 * @return the icon.
+	 */
+	protected Icon getSystemIcon(File aFile) {
+		return fileSystemView.getSystemIcon(aFile);
+	}
+
+	/**
+	 * Create a new {@link BufferedImage} to fit a given {@link java.awt.Image}.
+	 * 
+	 * @param awtImage an {@link java.awt.Image}.
+	 * @return a {@link BufferedImage}.
+	 */
+	protected BufferedImage newBufferedImage(java.awt.Image awtImage) {
+		return new BufferedImage(awtImage.getWidth(null), awtImage.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+	}
+
+	/**
+	 * Construct a new {@link Hashtable}.
+	 * 
+	 * @return the new {@link Hashtable}.
+	 */
+	protected Hashtable<Icon, ImageView> newHashtable() {
+		return new Hashtable<Icon, ImageView>();
 	}
 
 }

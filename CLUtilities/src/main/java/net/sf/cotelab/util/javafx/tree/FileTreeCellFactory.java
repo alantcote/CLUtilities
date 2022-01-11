@@ -12,7 +12,7 @@ import javafx.scene.control.TreeView;
 import javafx.util.Callback;
 
 /**
- * @author alantcote
+ * Tree cell factory to manufacture {@link FileTreeCell} objects.
  */
 public class FileTreeCellFactory implements Callback<TreeView<File>, TreeCell<File>> {
 	/**
@@ -20,24 +20,43 @@ public class FileTreeCellFactory implements Callback<TreeView<File>, TreeCell<Fi
 	 */
 	public static final FileSystemView fileSystemView = FileSystemView.getFileSystemView();
 
+	/**
+	 * A {@link FileIconFactory} to be passed on to the manufactured tree cells.
+	 */
 	protected FileIconFactory fileIconFactory;
-	
+
+	/**
+	 * Construct a new tree cell factory.
+	 * 
+	 * @param aFileIconFactory a {@link FileIconFactory} to be passed on to the
+	 *                         manufactured tree cells.
+	 */
 	public FileTreeCellFactory(FileIconFactory aFileIconFactory) {
 		super();
 
 		fileIconFactory = aFileIconFactory;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public TreeCell<File> call(TreeView<File> param) {
-		FileTreeCell newFileTreeCell = new FileTreeCell(fileIconFactory);
+		FileTreeCell newFileTreeCell = newFileTreeCell();
 		TreeCell<File> result = null;
-		
+
 		if (newFileTreeCell instanceof TreeCell) {
 			result = (TreeCell<File>) newFileTreeCell;
 		}
-		
+
 		return result;
+	}
+
+	/**
+	 * @return a new {@link FileTreeCell} object.
+	 */
+	protected FileTreeCell newFileTreeCell() {
+		return new FileTreeCell(fileIconFactory);
 	}
 
 }

@@ -91,7 +91,6 @@ public class ActiveFileTreeNode
      * @return	an Enumeration of this node's children
      *
      */
-    @SuppressWarnings("unchecked")
     public Enumeration<TreeNode> children() {
         Enumeration<TreeNode> retValue;
 
@@ -499,7 +498,6 @@ public class ActiveFileTreeNode
      * @return	an enumeration for traversing the tree in postorder
      *
      */
-    @SuppressWarnings("unchecked")
     public Enumeration<TreeNode> postorderEnumeration() {
         Enumeration<TreeNode> retValue;
 
@@ -519,7 +517,6 @@ public class ActiveFileTreeNode
      * @return	an enumeration for traversing the tree in preorder
      *
      */
-    @SuppressWarnings("unchecked")
     public Enumeration<TreeNode> preorderEnumeration() {
         Enumeration<TreeNode> retValue;
 

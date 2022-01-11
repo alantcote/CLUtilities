@@ -2,18 +2,11 @@ package net.sf.cotelab.util.javafx.tree;
 
 import java.io.File;
 
-import javax.swing.filechooser.FileSystemView;
-
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.TreeCell;
 import javafx.scene.image.ImageView;
 
 public class FileTreeCell extends TreeCell<File> {
-	/**
-	 * A supplier of platform-authentic icons and such.
-	 */
-	public static final FileSystemView fileSystemView = FileSystemView.getFileSystemView();
-
 	public static final String SYNTH_ROOT_NAME = "Filesystems";
 
 	protected FileIconFactory fileIconFactory;
@@ -30,6 +23,19 @@ public class FileTreeCell extends TreeCell<File> {
 		fileIconFactory = aFileIconFactory;
 	}
 
+	/**
+	 * Create a {@link Tooltip} containing a given bit of text.
+	 * 
+	 * @param presText the bit of text.
+	 * @return the {@link Tooltip}.
+	 */
+	protected Tooltip newTooltip(String presText) {
+		return new Tooltip(presText);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected void updateItem(File item, boolean empty) {
 //		System.out.println("FileTreeCell.updateItem(): item = " + item);
@@ -46,14 +52,14 @@ public class FileTreeCell extends TreeCell<File> {
 				setText(SYNTH_ROOT_NAME);
 			} else {
 				// normal File node
-				String presText = fileSystemView.getSystemDisplayName(item);
+				String presText = FileIconFactory.fileSystemView.getSystemDisplayName(item);
 				ImageView iconImage = fileIconFactory.getIcon(item);
 
 //				System.out.println("FileTreeCell.updateItem(): presText = " + presText);
 
 				setText(presText);
 				setGraphic(iconImage);
-				setTooltip(new Tooltip(presText));
+				setTooltip(newTooltip(presText));
 			}
 		}
 	}

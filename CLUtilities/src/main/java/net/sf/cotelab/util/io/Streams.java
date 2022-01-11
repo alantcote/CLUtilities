@@ -22,7 +22,8 @@ import net.sf.cotelab.util.collections.HashMultiMap;
 public abstract class Streams {
     public static final int BUFFER_SIZE = 1024;
 
-    public static Collection<Collection<BufferedInputStream>> nWayCompareEqualStreams(
+    @SuppressWarnings("removal")
+	public static Collection<Collection<BufferedInputStream>> nWayCompareEqualStreams(
             Collection<BufferedInputStream> src) {
         ArrayList<Collection<BufferedInputStream>> retValue =
                 new ArrayList<Collection<BufferedInputStream>>();
