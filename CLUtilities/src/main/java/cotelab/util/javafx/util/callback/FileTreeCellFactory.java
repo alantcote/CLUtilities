@@ -1,12 +1,14 @@
 /**
  * 
  */
-package net.sf.cotelab.util.javafx.tree;
+package cotelab.util.javafx.util.callback;
 
 import java.io.File;
 
 import javax.swing.filechooser.FileSystemView;
 
+import cotelab.util.javafx.scene.control.FileIconFactory;
+import cotelab.util.javafx.scene.control.FileTreeCell;
 import javafx.scene.control.TreeCell;
 import javafx.scene.control.TreeView;
 import javafx.util.Callback;

@@ -1,6 +1,8 @@
 module clutilities {
-	exports net.sf.cotelab.util.javafx.tree;
-	exports net.sf.cotelab.util.swing.tree;
+	exports cotelab.util.demo;
+	exports cotelab.util.javafx.scene.control;
+	exports cotelab.util.javafx.util.callback;
+	exports cotelab.util.javax.swing.tree;
 	
 	requires transitive java.desktop;
 	requires java.logging;

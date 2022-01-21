@@ -1,7 +1,8 @@
-package net.sf.cotelab.util.javafx.tree;
+package cotelab.util.javafx.scene.control;
 
 import java.io.File;
 
+import cotelab.util.javafx.util.callback.FileTreeCellFactory;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 
@@ -19,7 +20,7 @@ public class FileTreeView extends TreeView<File> {
 	public FileTreeView(TreeItem<File> root) {
 		super(root);
 
-		FileIconFactory fileIconFactory = newFileIconFactory();
+		FileIconFactory fileIconFactory = new FileIconFactory();
 
 		setCellFactory(new FileTreeCellFactory(fileIconFactory));
 	}

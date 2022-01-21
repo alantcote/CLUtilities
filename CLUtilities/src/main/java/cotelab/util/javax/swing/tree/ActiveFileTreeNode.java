@@ -3,7 +3,7 @@
  *
  * Created on November 6, 2002, 4:32 PM
  */
-package net.sf.cotelab.util.swing.tree;
+package cotelab.util.javax.swing.tree;
 
 import java.io.File;
 import java.util.Enumeration;

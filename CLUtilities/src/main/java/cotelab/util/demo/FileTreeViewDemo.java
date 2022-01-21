@@ -1,7 +1,9 @@
-package net.sf.cotelab.util.javafx.tree;
+package cotelab.util.demo;
 
 import java.io.File;
 
+import cotelab.util.javafx.scene.control.FileTreeItem;
+import cotelab.util.javafx.scene.control.FileTreeView;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.TreeItem;

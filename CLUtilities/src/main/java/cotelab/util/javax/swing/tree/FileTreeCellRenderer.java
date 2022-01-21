@@ -4,7 +4,7 @@
  * Created on May 28, 2003, 7:44 AM
  */
 
-package net.sf.cotelab.util.swing.tree;
+package cotelab.util.javax.swing.tree;
 
 import java.awt.Component;
 import java.io.File;

@@ -1,4 +1,4 @@
-package net.sf.cotelab.util.javafx.tree;
+package cotelab.util.javafx.scene.control;
 
 import java.io.File;
 
