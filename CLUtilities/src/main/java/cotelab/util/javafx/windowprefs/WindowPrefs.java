@@ -3,13 +3,18 @@ package cotelab.util.javafx.windowprefs;
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.stage.Stage;
 
 /**
  * Persistent application preferences.
  */
 public class WindowPrefs {
+	public static final String KEY_WINDOW_FULL_SCREEN = "WINDOW_FULL_SCREEN";
 	public static final String KEY_WINDOW_HEIGHT = "WINDOW_HEIGHT";
+	public static final String KEY_WINDOW_ICONIFIED = "WINDOW_ICONIFIED";
+	public static final String KEY_WINDOW_MAXIMIZED = "WINDOW_MAXIMIZED";
 	public static final String KEY_WINDOW_WIDTH = "WINDOW_WIDTH";
 	public static final String KEY_WINDOW_X = "WINDOW_X";
 	public static final String KEY_WINDOW_Y = "WINDOW_Y";
@@ -88,6 +93,75 @@ public class WindowPrefs {
 		}
 
 		stage.yProperty().addListener(newMetricListener(KEY_WINDOW_Y));
+
+		if (prefs.get(KEY_WINDOW_FULL_SCREEN, "XXX").equals("XXX")) {
+			prefs.putBoolean(KEY_WINDOW_FULL_SCREEN, stage.isFullScreen());
+		} else {
+			stage.setFullScreen(prefs.getBoolean(KEY_WINDOW_FULL_SCREEN, false));
+		}
+
+		stage.fullScreenProperty().addListener(new ChangeListener<Boolean>() {
+
+			@Override
+			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+				prefs.putBoolean(KEY_WINDOW_FULL_SCREEN, newValue);
+
+				try {
+					prefsSync();
+				} catch (BackingStoreException e) {
+					System.err.println("AppPrefs.inizGeometryPrefs(): full screen listener caught . . .");
+					e.printStackTrace();
+					System.err.println("AppPrefs.inizGeometryPrefs(): proceeding.");
+				}
+			}
+			
+		});
+
+		if (prefs.get(KEY_WINDOW_ICONIFIED, "XXX").equals("XXX")) {
+			prefs.putBoolean(KEY_WINDOW_ICONIFIED, stage.isIconified());
+		} else {
+			stage.setIconified(prefs.getBoolean(KEY_WINDOW_ICONIFIED, false));
+		}
+
+		stage.iconifiedProperty().addListener(new ChangeListener<Boolean>() {
+
+			@Override
+			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+				prefs.putBoolean(KEY_WINDOW_ICONIFIED, newValue);
+
+				try {
+					prefsSync();
+				} catch (BackingStoreException e) {
+					System.err.println("AppPrefs.inizGeometryPrefs(): iconified listener caught . . .");
+					e.printStackTrace();
+					System.err.println("AppPrefs.inizGeometryPrefs(): proceeding.");
+				}
+			}
+			
+		});
+
+		if (prefs.get(KEY_WINDOW_MAXIMIZED, "XXX").equals("XXX")) {
+			prefs.putBoolean(KEY_WINDOW_MAXIMIZED, stage.isMaximized());
+		} else {
+			stage.setMaximized(prefs.getBoolean(KEY_WINDOW_MAXIMIZED, false));
+		}
+
+		stage.maximizedProperty().addListener(new ChangeListener<Boolean>() {
+
+			@Override
+			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+				prefs.putBoolean(KEY_WINDOW_MAXIMIZED, newValue);
+
+				try {
+					prefsSync();
+				} catch (BackingStoreException e) {
+					System.err.println("AppPrefs.inizGeometryPrefs(): maximized listener caught . . .");
+					e.printStackTrace();
+					System.err.println("AppPrefs.inizGeometryPrefs(): proceeding.");
+				}
+			}
+			
+		});
 
 		try {
 			prefsSync();
