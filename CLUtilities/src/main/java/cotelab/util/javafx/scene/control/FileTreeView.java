@@ -20,9 +20,9 @@ public class FileTreeView extends TreeView<File> {
 	public FileTreeView(TreeItem<File> root) {
 		super(root);
 
-		FileIconFactory fileIconFactory = new FileIconFactory();
+		FileIconFactory fileIconFactory = newFileIconFactory();
 
-		setCellFactory(new FileTreeCellFactory(fileIconFactory));
+		setCellFactory(newFileTreeCellFactory(fileIconFactory));
 	}
 
 	/**
@@ -30,6 +30,14 @@ public class FileTreeView extends TreeView<File> {
 	 */
 	protected FileIconFactory newFileIconFactory() {
 		return new FileIconFactory();
+	}
+
+	/**
+	 * @param fileIconFactory
+	 * @return
+	 */
+	protected FileTreeCellFactory newFileTreeCellFactory(FileIconFactory fileIconFactory) {
+		return new FileTreeCellFactory(fileIconFactory);
 	}
 
 }
