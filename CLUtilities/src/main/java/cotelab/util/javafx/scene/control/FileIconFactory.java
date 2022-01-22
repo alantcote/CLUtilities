@@ -12,6 +12,7 @@ import javax.swing.filechooser.FileSystemView;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 
 /**
  * A caching provider of system-authentic icons for files.
@@ -68,10 +69,22 @@ public class FileIconFactory {
 			graphics.dispose();
 		}
 
-		Image fxImage = SwingFXUtils.toFXImage(bImg, null);
-		ImageView imageView = new ImageView(fxImage);
+		Image fxImage = swingFXUtilsToFXImage(bImg, null);
+		ImageView imageView = newImageView(fxImage);
 
 		return imageView;
+	}
+
+	/**
+	 * @param fxImage
+	 * @return
+	 */
+	protected ImageView newImageView(Image fxImage) {
+		return new ImageView(fxImage);
+	}
+	
+	protected Image swingFXUtilsToFXImage(BufferedImage bImg, WritableImage wimg) {
+		return SwingFXUtils.toFXImage(bImg, wimg);
 	}
 
 	/**
