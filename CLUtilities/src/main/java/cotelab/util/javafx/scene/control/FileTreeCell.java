@@ -24,6 +24,22 @@ public class FileTreeCell extends TreeCell<File> {
 	}
 
 	/**
+	 * @param item
+	 * @return
+	 */
+	protected String displayName(File item) {
+		return FileIconFactory.fileSystemView.getSystemDisplayName(item);
+	}
+
+	/**
+	 * @param item
+	 * @return
+	 */
+	protected ImageView getIconImage(File item) {
+		return fileIconFactory.getIcon(item);
+	}
+
+	/**
 	 * Create a {@link Tooltip} containing a given bit of text.
 	 * 
 	 * @param presText the bit of text.
@@ -52,8 +68,8 @@ public class FileTreeCell extends TreeCell<File> {
 				setText(SYNTH_ROOT_NAME);
 			} else {
 				// normal File node
-				String presText = FileIconFactory.fileSystemView.getSystemDisplayName(item);
-				ImageView iconImage = fileIconFactory.getIcon(item);
+				String presText = displayName(item);
+				ImageView iconImage = getIconImage(item);
 
 //				System.out.println("FileTreeCell.updateItem(): presText = " + presText);
 
