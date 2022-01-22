@@ -1,15 +1,19 @@
 package cotelab.util.demo;
 
 import java.io.File;
+import java.util.prefs.BackingStoreException;
 
 import cotelab.util.javafx.scene.control.FileTreeItem;
 import cotelab.util.javafx.scene.control.FileTreeView;
+import cotelab.util.javafx.windowprefs.WindowPrefs;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 /**
  * An application to demo {@link FileTreeView}.
@@ -31,7 +35,6 @@ public class FileTreeViewDemo extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			BorderPane root = newBorderPane();
-			// Scene scene = new Scene(root,1000,900);
 			Scene scene = newScene(root);
 
 			root.setUserData(getHostServices()); // covert communication to controller
@@ -40,12 +43,29 @@ public class FileTreeViewDemo extends Application {
 
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("File TreeView Demo");
+			
+			primaryStage.setOnShown(new EventHandler<WindowEvent>() {
+
+				@Override
+				public void handle(WindowEvent event) {
+					try {
+						windowPrefs = new WindowPrefs(FileTreeViewDemo.class, primaryStage);
+					} catch (BackingStoreException e) {
+						System.err.println("FileTreeViewDemo.start(): caught: " + e.getMessage());
+						e.printStackTrace();
+						System.err.println("FileTreeViewDemo.start(): continuing . . .");
+					}
+				}
+				
+			});
 
 			primaryStage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+	
+	protected WindowPrefs windowPrefs = null;
 
 	/**
 	 * Create the {@link FileTreeView} to be displayed by this demo.
