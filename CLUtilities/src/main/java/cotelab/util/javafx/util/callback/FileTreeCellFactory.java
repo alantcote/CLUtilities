@@ -1,6 +1,3 @@
-/**
- * 
- */
 package cotelab.util.javafx.util.callback;
 
 import java.io.File;
