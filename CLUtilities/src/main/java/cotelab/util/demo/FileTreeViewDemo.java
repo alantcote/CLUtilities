@@ -39,7 +39,7 @@ public class FileTreeViewDemo extends Application {
 			populateFileTreeViewPane(root);
 
 			primaryStage.setScene(scene);
-			primaryStage.setTitle("File TreeView Experiment");
+			primaryStage.setTitle("File TreeView Demo");
 
 			primaryStage.show();
 		} catch (Exception e) {
