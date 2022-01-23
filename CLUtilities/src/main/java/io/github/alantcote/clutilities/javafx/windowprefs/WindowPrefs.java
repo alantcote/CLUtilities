@@ -38,6 +38,13 @@ public class WindowPrefs {
 	}
 
 	/**
+	 * @return the prefs
+	 */
+	public Preferences getPrefs() {
+		return prefs;
+	}
+
+	/**
 	 * Set up the {@link Preferences} node, {@link #prefs}.
 	 * 
 	 * @throws BackingStoreException if thrown by the underlying code.
