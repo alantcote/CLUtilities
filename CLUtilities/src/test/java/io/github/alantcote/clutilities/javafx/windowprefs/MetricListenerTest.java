@@ -1,4 +1,4 @@
-package cotelab.util.javafx.windowprefs;
+package io.github.alantcote.clutilities.javafx.windowprefs;
 
 import static org.junit.Assert.assertEquals;
 
@@ -6,7 +6,7 @@ import java.util.prefs.Preferences;
 
 import org.junit.Test;
 
-import cotelab.util.demo.TestCaseWithJMockAndByteBuddy;
+import io.github.alantcote.clutilities.demo.TestCaseWithJMockAndByteBuddy;
 
 import javafx.beans.property.SimpleIntegerProperty;
 

@@ -1,4 +1,4 @@
-package cotelab.util.javafx.scene.control;
+package io.github.alantcote.clutilities.javafx.scene.control;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;

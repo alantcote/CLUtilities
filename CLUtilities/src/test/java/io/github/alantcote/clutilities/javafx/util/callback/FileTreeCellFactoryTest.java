@@ -1,4 +1,4 @@
-package cotelab.util.javafx.util.callback;
+package io.github.alantcote.clutilities.javafx.util.callback;
 
 import static org.junit.Assert.*;
 
@@ -7,21 +7,21 @@ import java.io.File;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import cotelab.jfxrunner.JavaFxJUnit4ClassRunner;
-import cotelab.util.demo.TestCaseWithJMockAndByteBuddy;
-import cotelab.util.javafx.scene.control.FileIconFactory;
-import cotelab.util.javafx.scene.control.FileTreeCell;
+import de.saxsys.mvvmfx.testingutils.jfxrunner.JfxRunner;
+import io.github.alantcote.clutilities.demo.TestCaseWithJMockAndByteBuddy;
+import io.github.alantcote.clutilities.javafx.scene.control.FileIconFactory;
+import io.github.alantcote.clutilities.javafx.scene.control.FileTreeCell;
 import javafx.scene.control.TreeView;
 
 /**
- * Test case for {@link cotelab.util.javafx.util.callback.FileTreeCellFactory}.
+ * Test case for {@link io.github.alantcote.clutilities.javafx.util.callback.FileTreeCellFactory}.
  */
-@RunWith(JavaFxJUnit4ClassRunner.class)
+@RunWith(JfxRunner.class)
 public class FileTreeCellFactoryTest extends TestCaseWithJMockAndByteBuddy {
 
 	/**
 	 * Test method for
-	 * {@link cotelab.util.javafx.util.callback.FileTreeCellFactory#call(javafx.scene.control.TreeView)}.
+	 * {@link io.github.alantcote.clutilities.javafx.util.callback.FileTreeCellFactory#call(javafx.scene.control.TreeView)}.
 	 */
 	@Test
 	public void testCall() {
@@ -43,7 +43,7 @@ public class FileTreeCellFactoryTest extends TestCaseWithJMockAndByteBuddy {
 
 	/**
 	 * Test method for
-	 * {@link cotelab.util.javafx.util.callback.FileTreeCellFactory#FileTreeCellFactory(cotelab.util.javafx.scene.control.FileIconFactory)}.
+	 * {@link io.github.alantcote.clutilities.javafx.util.callback.FileTreeCellFactory#FileTreeCellFactory(io.github.alantcote.clutilities.javafx.scene.control.FileIconFactory)}.
 	 */
 	@Test
 	public void testFileTreeCellFactory() {
@@ -57,7 +57,7 @@ public class FileTreeCellFactoryTest extends TestCaseWithJMockAndByteBuddy {
 
 	/**
 	 * Test method for
-	 * {@link cotelab.util.javafx.util.callback.FileTreeCellFactory#newFileTreeCell()}.
+	 * {@link io.github.alantcote.clutilities.javafx.util.callback.FileTreeCellFactory#newFileTreeCell()}.
 	 */
 	@Test
 	public void testNewFileTreeCell() {

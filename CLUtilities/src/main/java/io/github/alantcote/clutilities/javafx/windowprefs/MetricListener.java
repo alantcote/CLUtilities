@@ -1,4 +1,4 @@
-package cotelab.util.javafx.windowprefs;
+package io.github.alantcote.clutilities.javafx.windowprefs;
 
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;

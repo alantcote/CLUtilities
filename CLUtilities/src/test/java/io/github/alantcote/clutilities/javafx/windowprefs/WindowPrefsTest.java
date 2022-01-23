@@ -1,4 +1,4 @@
-package cotelab.util.javafx.windowprefs;
+package io.github.alantcote.clutilities.javafx.windowprefs;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -9,15 +9,15 @@ import java.util.prefs.Preferences;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import cotelab.jfxrunner.JavaFxJUnit4ClassRunner;
-import cotelab.util.demo.TestCaseWithJMockAndByteBuddy;
+import de.saxsys.mvvmfx.testingutils.jfxrunner.JfxRunner;
+import io.github.alantcote.clutilities.demo.TestCaseWithJMockAndByteBuddy;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.stage.Stage;
 
 /**
  * Test case for {@link cotelab.dupfilefinder2.WindowPrefs#WindowPrefs}.
  */
-@RunWith(JavaFxJUnit4ClassRunner.class)
+@RunWith(JfxRunner.class)
 public class WindowPrefsTest extends TestCaseWithJMockAndByteBuddy {
 	/**
 	 * Test method for

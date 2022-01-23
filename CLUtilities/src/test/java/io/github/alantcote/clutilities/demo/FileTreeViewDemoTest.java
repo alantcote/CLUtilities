@@ -1,4 +1,4 @@
-package cotelab.util.demo;
+package io.github.alantcote.clutilities.demo;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -9,9 +9,9 @@ import org.jmock.Expectations;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import cotelab.jfxrunner.JavaFxJUnit4ClassRunner;
-import cotelab.util.javafx.scene.control.FileTreeItem;
-import cotelab.util.javafx.scene.control.FileTreeView;
+import de.saxsys.mvvmfx.testingutils.jfxrunner.JfxRunner;
+import io.github.alantcote.clutilities.javafx.scene.control.FileTreeItem;
+import io.github.alantcote.clutilities.javafx.scene.control.FileTreeView;
 import javafx.application.HostServices;
 import javafx.event.EventType;
 import javafx.event.WeakEventHandler;
@@ -22,14 +22,14 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 /**
- * Test case for {@link cotelab.util.demo.FileTreeViewDemo}.
+ * Test case for {@link io.github.alantcote.clutilities.demo.FileTreeViewDemo}.
  */
-@RunWith(JavaFxJUnit4ClassRunner.class)
+@RunWith(JfxRunner.class)
 public class FileTreeViewDemoTest extends TestCaseWithJMockAndByteBuddy {
 
 	/**
 	 * Test method for
-	 * {@link cotelab.util.demo.FileTreeViewDemo#createFileTreeView()}.
+	 * {@link io.github.alantcote.clutilities.demo.FileTreeViewDemo#createFileTreeView()}.
 	 */
 	@Test
 	public void testCreateFileTreeView() {
@@ -56,7 +56,7 @@ public class FileTreeViewDemoTest extends TestCaseWithJMockAndByteBuddy {
 
 	/**
 	 * Test method for
-	 * {@link cotelab.util.demo.FileTreeViewDemo#main(java.lang.String[])}.
+	 * {@link io.github.alantcote.clutilities.demo.FileTreeViewDemo#main(java.lang.String[])}.
 	 */
 	@Test
 	public void testMain() {
@@ -65,7 +65,7 @@ public class FileTreeViewDemoTest extends TestCaseWithJMockAndByteBuddy {
 	}
 
 	/**
-	 * Test method for {@link cotelab.util.demo.FileTreeViewDemo#newBorderPane()}.
+	 * Test method for {@link io.github.alantcote.clutilities.demo.FileTreeViewDemo#newBorderPane()}.
 	 */
 	@Test
 	public void testNewBorderPane() {
@@ -75,7 +75,7 @@ public class FileTreeViewDemoTest extends TestCaseWithJMockAndByteBuddy {
 	}
 
 	/**
-	 * Test method for {@link cotelab.util.demo.FileTreeViewDemo#newFileTreeItem()}.
+	 * Test method for {@link io.github.alantcote.clutilities.demo.FileTreeViewDemo#newFileTreeItem()}.
 	 */
 	@Test
 	public void testNewFileTreeItem() {
@@ -86,7 +86,7 @@ public class FileTreeViewDemoTest extends TestCaseWithJMockAndByteBuddy {
 
 	/**
 	 * Test method for
-	 * {@link cotelab.util.demo.FileTreeViewDemo#newFileTreeView(javafx.scene.control.TreeItem)}.
+	 * {@link io.github.alantcote.clutilities.demo.FileTreeViewDemo#newFileTreeView(javafx.scene.control.TreeItem)}.
 	 */
 	@SuppressWarnings("unchecked")
 	@Test
@@ -109,7 +109,7 @@ public class FileTreeViewDemoTest extends TestCaseWithJMockAndByteBuddy {
 
 	/**
 	 * Test method for
-	 * {@link cotelab.util.demo.FileTreeViewDemo#newScene(javafx.scene.layout.BorderPane)}.
+	 * {@link io.github.alantcote.clutilities.demo.FileTreeViewDemo#newScene(javafx.scene.layout.BorderPane)}.
 	 */
 	@Test
 	public void testNewScene() {
@@ -121,7 +121,7 @@ public class FileTreeViewDemoTest extends TestCaseWithJMockAndByteBuddy {
 
 	/**
 	 * Test method for
-	 * {@link cotelab.util.demo.FileTreeViewDemo#populateFileTreeViewPane(javafx.scene.layout.BorderPane)}.
+	 * {@link io.github.alantcote.clutilities.demo.FileTreeViewDemo#populateFileTreeViewPane(javafx.scene.layout.BorderPane)}.
 	 */
 	@Test
 	public void testPopulateFileTreeViewPane() {
@@ -142,7 +142,7 @@ public class FileTreeViewDemoTest extends TestCaseWithJMockAndByteBuddy {
 
 	/**
 	 * Test method for
-	 * {@link cotelab.util.demo.FileTreeViewDemo#start(javafx.stage.Stage)}.
+	 * {@link io.github.alantcote.clutilities.demo.FileTreeViewDemo#start(javafx.stage.Stage)}.
 	 */
 	@Test
 	public void testStartStage() {

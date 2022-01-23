@@ -1,11 +1,11 @@
-package cotelab.util.demo;
+package io.github.alantcote.clutilities.demo;
 
 import java.io.File;
 import java.util.prefs.BackingStoreException;
 
-import cotelab.util.javafx.scene.control.FileTreeItem;
-import cotelab.util.javafx.scene.control.FileTreeView;
-import cotelab.util.javafx.windowprefs.WindowPrefs;
+import io.github.alantcote.clutilities.javafx.scene.control.FileTreeItem;
+import io.github.alantcote.clutilities.javafx.scene.control.FileTreeView;
+import io.github.alantcote.clutilities.javafx.windowprefs.WindowPrefs;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;

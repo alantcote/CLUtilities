@@ -1,4 +1,4 @@
-package cotelab.util.javafx.scene.control;
+package io.github.alantcote.clutilities.javafx.scene.control;
 
 import static org.junit.Assert.*;
 
@@ -8,20 +8,20 @@ import org.jmock.Expectations;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import cotelab.jfxrunner.JavaFxJUnit4ClassRunner;
-import cotelab.util.demo.TestCaseWithJMockAndByteBuddy;
+import de.saxsys.mvvmfx.testingutils.jfxrunner.JfxRunner;
+import io.github.alantcote.clutilities.demo.TestCaseWithJMockAndByteBuddy;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 
 /**
- * Test case for {@link cotelab.util.javafx.scene.control.FileTreeCell}.
+ * Test case for {@link io.github.alantcote.clutilities.javafx.scene.control.FileTreeCell}.
  */
-@RunWith(JavaFxJUnit4ClassRunner.class)
+@RunWith(JfxRunner.class)
 public class FileTreeCellTest extends TestCaseWithJMockAndByteBuddy {
 
 	/**
 	 * Test method for
-	 * {@link cotelab.util.javafx.scene.control.FileTreeCell#displayName(java.io.File)}.
+	 * {@link io.github.alantcote.clutilities.javafx.scene.control.FileTreeCell#displayName(java.io.File)}.
 	 */
 	@Test
 	public void testDisplayName() {
@@ -35,7 +35,7 @@ public class FileTreeCellTest extends TestCaseWithJMockAndByteBuddy {
 
 	/**
 	 * Test method for
-	 * {@link cotelab.util.javafx.scene.control.FileTreeCell#FileTreeCell(cotelab.util.javafx.scene.control.FileIconFactory)}.
+	 * {@link io.github.alantcote.clutilities.javafx.scene.control.FileTreeCell#FileTreeCell(io.github.alantcote.clutilities.javafx.scene.control.FileIconFactory)}.
 	 */
 	@Test
 	public void testFileTreeCell() {
@@ -48,7 +48,7 @@ public class FileTreeCellTest extends TestCaseWithJMockAndByteBuddy {
 
 	/**
 	 * Test method for
-	 * {@link cotelab.util.javafx.scene.control.FileTreeCell#getIconImage(java.io.File)}.
+	 * {@link io.github.alantcote.clutilities.javafx.scene.control.FileTreeCell#getIconImage(java.io.File)}.
 	 */
 	@Test
 	public void testGetIconImage() {
@@ -70,7 +70,7 @@ public class FileTreeCellTest extends TestCaseWithJMockAndByteBuddy {
 
 	/**
 	 * Test method for
-	 * {@link cotelab.util.javafx.scene.control.FileTreeCell#newTooltip(java.lang.String)}.
+	 * {@link io.github.alantcote.clutilities.javafx.scene.control.FileTreeCell#newTooltip(java.lang.String)}.
 	 */
 	@Test
 	public void testNewTooltip() {
@@ -83,7 +83,7 @@ public class FileTreeCellTest extends TestCaseWithJMockAndByteBuddy {
 
 	/**
 	 * Test method for
-	 * {@link cotelab.util.javafx.scene.control.FileTreeCell#updateItem(java.io.File, boolean)}.
+	 * {@link io.github.alantcote.clutilities.javafx.scene.control.FileTreeCell#updateItem(java.io.File, boolean)}.
 	 */
 	@Test
 	public void testUpdateItemFileBoolean() {

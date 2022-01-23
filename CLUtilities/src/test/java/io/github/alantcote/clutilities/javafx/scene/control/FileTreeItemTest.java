@@ -1,4 +1,4 @@
-package cotelab.util.javafx.scene.control;
+package io.github.alantcote.clutilities.javafx.scene.control;
 
 import static org.junit.Assert.*;
 
@@ -7,18 +7,18 @@ import java.io.File;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import cotelab.jfxrunner.JavaFxJUnit4ClassRunner;
-import cotelab.util.demo.TestCaseWithJMockAndByteBuddy;
+import de.saxsys.mvvmfx.testingutils.jfxrunner.JfxRunner;
+import io.github.alantcote.clutilities.demo.TestCaseWithJMockAndByteBuddy;
 
 /**
- * Test case for {@link cotelab.util.javafx.scene.control.FileTreeItem}.
+ * Test case for {@link io.github.alantcote.clutilities.javafx.scene.control.FileTreeItem}.
  */
-@RunWith(JavaFxJUnit4ClassRunner.class)
+@RunWith(JfxRunner.class)
 public class FileTreeItemTest extends TestCaseWithJMockAndByteBuddy {
 
 	/**
 	 * Test method for
-	 * {@link cotelab.util.javafx.scene.control.FileTreeItem#FileTreeItem(java.io.File)}.
+	 * {@link io.github.alantcote.clutilities.javafx.scene.control.FileTreeItem#FileTreeItem(java.io.File)}.
 	 */
 	@Test
 	public void testFileTreeItem() {
@@ -32,7 +32,7 @@ public class FileTreeItemTest extends TestCaseWithJMockAndByteBuddy {
 
 	/**
 	 * Test method for
-	 * {@link cotelab.util.javafx.scene.control.FileTreeItem#getChildren()}.
+	 * {@link io.github.alantcote.clutilities.javafx.scene.control.FileTreeItem#getChildren()}.
 	 */
 	@Test
 	public void testGetChildren() {
@@ -44,7 +44,7 @@ public class FileTreeItemTest extends TestCaseWithJMockAndByteBuddy {
 
 	/**
 	 * Test method for
-	 * {@link cotelab.util.javafx.scene.control.FileTreeItem#isLeaf()}.
+	 * {@link io.github.alantcote.clutilities.javafx.scene.control.FileTreeItem#isLeaf()}.
 	 */
 	@Test
 	public void testIsLeaf() {
@@ -56,7 +56,7 @@ public class FileTreeItemTest extends TestCaseWithJMockAndByteBuddy {
 
 	/**
 	 * Test method for
-	 * {@link cotelab.util.javafx.scene.control.FileTreeItem#newFileTreeItem(java.io.File)}.
+	 * {@link io.github.alantcote.clutilities.javafx.scene.control.FileTreeItem#newFileTreeItem(java.io.File)}.
 	 */
 	@Test
 	public void testNewFileTreeItem() {

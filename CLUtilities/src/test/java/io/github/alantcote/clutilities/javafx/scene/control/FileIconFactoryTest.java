@@ -1,4 +1,4 @@
-package cotelab.util.javafx.scene.control;
+package io.github.alantcote.clutilities.javafx.scene.control;
 
 import static org.junit.Assert.*;
 
@@ -12,20 +12,20 @@ import org.jmock.Expectations;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import cotelab.jfxrunner.JavaFxJUnit4ClassRunner;
-import cotelab.util.demo.TestCaseWithJMockAndByteBuddy;
+import de.saxsys.mvvmfx.testingutils.jfxrunner.JfxRunner;
+import io.github.alantcote.clutilities.demo.TestCaseWithJMockAndByteBuddy;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 
 /**
- * Test case for {@link cotelab.util.javafx.scene.control.FileIconFactory}.
+ * Test case for {@link io.github.alantcote.clutilities.javafx.scene.control.FileIconFactory}.
  */
-@RunWith(JavaFxJUnit4ClassRunner.class)
+@RunWith(JfxRunner.class)
 public class FileIconFactoryTest extends TestCaseWithJMockAndByteBuddy {
 
 	/**
-	 * Test method for {@link cotelab.util.javafx.scene.control.FileIconFactory#getIcon(java.io.File)}.
+	 * Test method for {@link io.github.alantcote.clutilities.javafx.scene.control.FileIconFactory#getIcon(java.io.File)}.
 	 */
 	@Test
 	public void testGetIcon() {
@@ -50,7 +50,7 @@ public class FileIconFactoryTest extends TestCaseWithJMockAndByteBuddy {
 	}
 
 	/**
-	 * Test method for {@link cotelab.util.javafx.scene.control.FileIconFactory#getIconImage(javax.swing.Icon)}.
+	 * Test method for {@link io.github.alantcote.clutilities.javafx.scene.control.FileIconFactory#getIconImage(javax.swing.Icon)}.
 	 */
 	@Test
 	public void testGetIconImage() {
@@ -83,7 +83,7 @@ public class FileIconFactoryTest extends TestCaseWithJMockAndByteBuddy {
 	}
 
 	/**
-	 * Test method for {@link cotelab.util.javafx.scene.control.FileIconFactory#getImageView(javax.swing.Icon)}.
+	 * Test method for {@link io.github.alantcote.clutilities.javafx.scene.control.FileIconFactory#getImageView(javax.swing.Icon)}.
 	 */
 	@Test
 	public void testGetImageView() {
@@ -102,7 +102,7 @@ public class FileIconFactoryTest extends TestCaseWithJMockAndByteBuddy {
 	}
 
 	/**
-	 * Test method for {@link cotelab.util.javafx.scene.control.FileIconFactory#getSystemIcon(java.io.File)}.
+	 * Test method for {@link io.github.alantcote.clutilities.javafx.scene.control.FileIconFactory#getSystemIcon(java.io.File)}.
 	 */
 	@Test
 	public void testGetSystemIcon() {
@@ -113,7 +113,7 @@ public class FileIconFactoryTest extends TestCaseWithJMockAndByteBuddy {
 	}
 
 	/**
-	 * Test method for {@link cotelab.util.javafx.scene.control.FileIconFactory#newBufferedImage(java.awt.Image)}.
+	 * Test method for {@link io.github.alantcote.clutilities.javafx.scene.control.FileIconFactory#newBufferedImage(java.awt.Image)}.
 	 */
 	@Test
 	public void testNewBufferedImage() {
@@ -134,7 +134,7 @@ public class FileIconFactoryTest extends TestCaseWithJMockAndByteBuddy {
 	}
 
 	/**
-	 * Test method for {@link cotelab.util.javafx.scene.control.FileIconFactory#newHashtable()}.
+	 * Test method for {@link io.github.alantcote.clutilities.javafx.scene.control.FileIconFactory#newHashtable()}.
 	 */
 	@Test
 	public void testNewHashtable() {

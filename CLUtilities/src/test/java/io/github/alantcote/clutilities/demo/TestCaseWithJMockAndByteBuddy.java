@@ -1,4 +1,4 @@
-package cotelab.util.demo;
+package io.github.alantcote.clutilities.demo;
 
 import org.jmock.Mockery;
 import org.jmock.Sequence;

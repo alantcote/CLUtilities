@@ -1,4 +1,4 @@
-package cotelab.util.javafx.scene.control;
+package io.github.alantcote.clutilities.javafx.scene.control;
 
 import java.io.File;
 

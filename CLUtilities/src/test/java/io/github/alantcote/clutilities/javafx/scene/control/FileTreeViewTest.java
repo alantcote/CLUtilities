@@ -1,4 +1,4 @@
-package cotelab.util.javafx.scene.control;
+package io.github.alantcote.clutilities.javafx.scene.control;
 
 import static org.junit.Assert.*;
 
@@ -6,20 +6,20 @@ import org.jmock.Expectations;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import cotelab.jfxrunner.JavaFxJUnit4ClassRunner;
-import cotelab.util.demo.TestCaseWithJMockAndByteBuddy;
+import de.saxsys.mvvmfx.testingutils.jfxrunner.JfxRunner;
+import io.github.alantcote.clutilities.demo.TestCaseWithJMockAndByteBuddy;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
 
 /**
- * Test case for {@link cotelab.util.javafx.scene.control.FileTreeView}.
+ * Test case for {@link io.github.alantcote.clutilities.javafx.scene.control.FileTreeView}.
  */
-@RunWith(JavaFxJUnit4ClassRunner.class)
+@RunWith(JfxRunner.class)
 public class FileTreeViewTest extends TestCaseWithJMockAndByteBuddy {
 
 	/**
 	 * Test method for
-	 * {@link cotelab.util.javafx.scene.control.FileTreeView#FileTreeView(javafx.scene.control.TreeItem)}.
+	 * {@link io.github.alantcote.clutilities.javafx.scene.control.FileTreeView#FileTreeView(javafx.scene.control.TreeItem)}.
 	 */
 	@SuppressWarnings("unchecked")
 	@Test
@@ -45,7 +45,7 @@ public class FileTreeViewTest extends TestCaseWithJMockAndByteBuddy {
 
 	/**
 	 * Test method for
-	 * {@link cotelab.util.javafx.scene.control.FileTreeView#newFileIconFactory()}.
+	 * {@link io.github.alantcote.clutilities.javafx.scene.control.FileTreeView#newFileIconFactory()}.
 	 */
 	@SuppressWarnings("unchecked")
 	@Test
@@ -69,7 +69,7 @@ public class FileTreeViewTest extends TestCaseWithJMockAndByteBuddy {
 
 	/**
 	 * Test method for
-	 * {@link cotelab.util.javafx.scene.control.FileTreeView#newFileTreeCellFactory(cotelab.util.javafx.scene.control.FileIconFactory)}.
+	 * {@link io.github.alantcote.clutilities.javafx.scene.control.FileTreeView#newFileTreeCellFactory(io.github.alantcote.clutilities.javafx.scene.control.FileIconFactory)}.
 	 */
 	@SuppressWarnings("unchecked")
 	@Test

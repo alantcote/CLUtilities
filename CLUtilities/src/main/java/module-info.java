@@ -1,9 +1,9 @@
 module clutilities {
-	exports cotelab.util.demo;
-	exports cotelab.util.javafx.scene.control;
-	exports cotelab.util.javafx.util.callback;
-	exports cotelab.util.javafx.windowprefs;
-	
+	exports io.github.alantcote.clutilities.demo;
+	exports io.github.alantcote.clutilities.javafx.scene.control;
+	exports io.github.alantcote.clutilities.javafx.util.callback;
+	exports io.github.alantcote.clutilities.javafx.windowprefs;
+
 	requires transitive java.desktop;
 	requires java.logging;
 	requires transitive java.prefs;
