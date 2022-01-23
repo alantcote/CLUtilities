@@ -8,16 +8,16 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import de.saxsys.mvvmfx.testingutils.jfxrunner.JfxRunner;
-import io.github.alantcote.clutilities.demo.TestCaseWithJMockAndByteBuddy;
 import io.github.alantcote.clutilities.javafx.scene.control.FileIconFactory;
 import io.github.alantcote.clutilities.javafx.scene.control.FileTreeCell;
+import io.github.alantcote.clutilities.jmock.TestCaseWithJMock;
 import javafx.scene.control.TreeView;
 
 /**
  * Test case for {@link io.github.alantcote.clutilities.javafx.util.callback.FileTreeCellFactory}.
  */
 @RunWith(JfxRunner.class)
-public class FileTreeCellFactoryTest extends TestCaseWithJMockAndByteBuddy {
+public class FileTreeCellFactoryTest extends TestCaseWithJMock {
 
 	/**
 	 * Test method for

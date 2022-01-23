@@ -10,7 +10,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import de.saxsys.mvvmfx.testingutils.jfxrunner.JfxRunner;
-import io.github.alantcote.clutilities.demo.TestCaseWithJMockAndByteBuddy;
+import io.github.alantcote.clutilities.jmock.TestCaseWithJMock;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.stage.Stage;
 
@@ -18,7 +18,7 @@ import javafx.stage.Stage;
  * Test case for {@link cotelab.dupfilefinder2.WindowPrefs#WindowPrefs}.
  */
 @RunWith(JfxRunner.class)
-public class WindowPrefsTest extends TestCaseWithJMockAndByteBuddy {
+public class WindowPrefsTest extends TestCaseWithJMock {
 	/**
 	 * Test method for
 	 * {@link cotelab.dupfilefinder2.WindowPrefs#establishPreferencesNode()}.

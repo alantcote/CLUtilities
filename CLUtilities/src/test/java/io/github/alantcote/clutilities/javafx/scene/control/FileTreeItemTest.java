@@ -8,13 +8,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import de.saxsys.mvvmfx.testingutils.jfxrunner.JfxRunner;
-import io.github.alantcote.clutilities.demo.TestCaseWithJMockAndByteBuddy;
+import io.github.alantcote.clutilities.jmock.TestCaseWithJMock;
 
 /**
  * Test case for {@link io.github.alantcote.clutilities.javafx.scene.control.FileTreeItem}.
  */
 @RunWith(JfxRunner.class)
-public class FileTreeItemTest extends TestCaseWithJMockAndByteBuddy {
+public class FileTreeItemTest extends TestCaseWithJMock {
 
 	/**
 	 * Test method for

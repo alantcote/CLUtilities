@@ -9,7 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import de.saxsys.mvvmfx.testingutils.jfxrunner.JfxRunner;
-import io.github.alantcote.clutilities.demo.TestCaseWithJMockAndByteBuddy;
+import io.github.alantcote.clutilities.jmock.TestCaseWithJMock;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 
@@ -17,7 +17,7 @@ import javafx.scene.image.ImageView;
  * Test case for {@link io.github.alantcote.clutilities.javafx.scene.control.FileTreeCell}.
  */
 @RunWith(JfxRunner.class)
-public class FileTreeCellTest extends TestCaseWithJMockAndByteBuddy {
+public class FileTreeCellTest extends TestCaseWithJMock {
 
 	/**
 	 * Test method for

@@ -6,14 +6,13 @@ import java.util.prefs.Preferences;
 
 import org.junit.Test;
 
-import io.github.alantcote.clutilities.demo.TestCaseWithJMockAndByteBuddy;
-
+import io.github.alantcote.clutilities.jmock.TestCaseWithJMock;
 import javafx.beans.property.SimpleIntegerProperty;
 
 /**
  * Test case for {@link MetricListener}.
  */
-public class MetricListenerTest extends TestCaseWithJMockAndByteBuddy {
+public class MetricListenerTest extends TestCaseWithJMock {
 	public static final String KEY = "preference";
 	public static final Preferences NODE = Preferences.userRoot();
 

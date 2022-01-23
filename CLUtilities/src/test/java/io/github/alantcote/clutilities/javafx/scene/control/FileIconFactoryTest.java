@@ -13,7 +13,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import de.saxsys.mvvmfx.testingutils.jfxrunner.JfxRunner;
-import io.github.alantcote.clutilities.demo.TestCaseWithJMockAndByteBuddy;
+import io.github.alantcote.clutilities.jmock.TestCaseWithJMock;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
@@ -22,7 +22,7 @@ import javafx.scene.image.WritableImage;
  * Test case for {@link io.github.alantcote.clutilities.javafx.scene.control.FileIconFactory}.
  */
 @RunWith(JfxRunner.class)
-public class FileIconFactoryTest extends TestCaseWithJMockAndByteBuddy {
+public class FileIconFactoryTest extends TestCaseWithJMock {
 
 	/**
 	 * Test method for {@link io.github.alantcote.clutilities.javafx.scene.control.FileIconFactory#getIcon(java.io.File)}.

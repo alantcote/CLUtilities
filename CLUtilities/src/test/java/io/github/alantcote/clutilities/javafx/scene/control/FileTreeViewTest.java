@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import de.saxsys.mvvmfx.testingutils.jfxrunner.JfxRunner;
-import io.github.alantcote.clutilities.demo.TestCaseWithJMockAndByteBuddy;
+import io.github.alantcote.clutilities.jmock.TestCaseWithJMock;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
 
@@ -15,7 +15,7 @@ import javafx.event.EventType;
  * Test case for {@link io.github.alantcote.clutilities.javafx.scene.control.FileTreeView}.
  */
 @RunWith(JfxRunner.class)
-public class FileTreeViewTest extends TestCaseWithJMockAndByteBuddy {
+public class FileTreeViewTest extends TestCaseWithJMock {
 
 	/**
 	 * Test method for

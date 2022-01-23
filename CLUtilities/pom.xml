@@ -216,28 +216,18 @@
 			<groupId>net.bytebuddy</groupId>
 			<artifactId>byte-buddy</artifactId>
 			<version>1.12.6</version>
-			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>cglib</groupId>
 			<artifactId>cglib-nodep</artifactId>
 			<version>3.3.0</version>
-			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-core</artifactId>
-			<version>2.2</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-library</artifactId>
-			<version>2.2</version>
-			<scope>provided</scope>
+			<artifactId>hamcrest-all</artifactId>
+			<version>1.3</version>
 		</dependency>
 
 		<dependency>
@@ -293,31 +283,19 @@
 			<groupId>org.jmock</groupId>
 			<artifactId>jmock-imposters</artifactId>
 			<version>2.12.0</version>
-			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.jmock</groupId>
 			<artifactId>jmock-legacy</artifactId>
 			<version>2.12.0</version>
-			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.13.2</version>
-			<scope>provided</scope>
 		</dependency>
-
-		<!--
-		<dependency>
-			<groupId>io.github.alantcote</groupId>
-			<artifactId>junit4openjfx</artifactId>
-			<version>1.0.0</version>
-			<scope>test</scope>
-		</dependency>
-		-->
 
 		<dependency>
 			<groupId>de.saxsys</groupId>

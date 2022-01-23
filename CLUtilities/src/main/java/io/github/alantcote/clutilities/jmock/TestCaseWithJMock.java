@@ -1,4 +1,4 @@
-package io.github.alantcote.clutilities.demo;
+package io.github.alantcote.clutilities.jmock;
 
 import org.jmock.Mockery;
 import org.jmock.Sequence;
@@ -7,7 +7,13 @@ import org.jmock.lib.concurrent.Synchroniser;
 import org.junit.After;
 import org.junit.Before;
 
-public abstract class TestCaseWithJMockAndByteBuddy {
+/**
+ * A superclass for JUnit test cases that use JMock.
+ * 
+ * {@link ByteBuddyClassImposteriser} is the imposterizer used, in order to
+ * enable mocking classes as well as interfaces.
+ */
+public abstract class TestCaseWithJMock {
 	/**
 	 * The {@link Mockery}.
 	 */
@@ -20,6 +26,7 @@ public abstract class TestCaseWithJMockAndByteBuddy {
 
 	/**
 	 * Ensure all the expectations are satisfied.
+	 * 
 	 * @throws Exception if the expectations are not properly satisfied.
 	 */
 	@After
@@ -29,6 +36,7 @@ public abstract class TestCaseWithJMockAndByteBuddy {
 
 	/**
 	 * Set up {@link #context} and {@link sequence}.
+	 * 
 	 * @throws Exception when appropriate.
 	 */
 	@Before
