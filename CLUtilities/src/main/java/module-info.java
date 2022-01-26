@@ -6,14 +6,17 @@ module clutilities {
 	exports io.github.alantcote.clutilities.jmock;
 
 	requires transitive java.desktop;
-	requires transitive java.logging;
+//	requires transitive java.logging;
 	requires transitive java.prefs;
-	requires transitive javafx.base;
+//	requires transitive javafx.base;
 	requires transitive javafx.controls;
-	requires transitive javafx.graphics;
+//	requires transitive javafx.graphics;
 	requires transitive javafx.swing;
 	requires transitive jmock;
 	requires transitive jmock.imposters;
 	requires transitive junit;
-	requires hamcrest.all ;
+//	requires hamcrest.all ;
+	requires transitive org.hamcrest;
+	requires javafx.base;
+	requires javafx.graphics;
 }

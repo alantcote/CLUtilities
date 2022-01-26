@@ -28,6 +28,8 @@ public class FileTreeViewDemo extends Application {
 		launch(args);
 	}
 
+	protected WindowPrefs windowPrefs = null;
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -41,31 +43,16 @@ public class FileTreeViewDemo extends Application {
 
 			populateFileTreeViewPane(root);
 
-			primaryStage.setScene(scene);
-			primaryStage.setTitle("File TreeView Demo");
+			stageSetScene(primaryStage, scene);
+			stageSetTitle(primaryStage);
 			
-			primaryStage.setOnShown(new EventHandler<WindowEvent>() {
+			stageSetOnShown(primaryStage);
 
-				@Override
-				public void handle(WindowEvent event) {
-					try {
-						windowPrefs = new WindowPrefs(FileTreeViewDemo.class, primaryStage);
-					} catch (BackingStoreException e) {
-						System.err.println("FileTreeViewDemo.start(): caught: " + e.getMessage());
-						e.printStackTrace();
-						System.err.println("FileTreeViewDemo.start(): continuing . . .");
-					}
-				}
-				
-			});
-
-			primaryStage.show();
+			stageShow(primaryStage);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
-	protected WindowPrefs windowPrefs = null;
 
 	/**
 	 * Create the {@link FileTreeView} to be displayed by this demo.
@@ -93,7 +80,7 @@ public class FileTreeViewDemo extends Application {
 	protected FileTreeItem newFileTreeItem() {
 		return new FileTreeItem(null);
 	}
-
+	
 	/**
 	 * Factory for instances of {@link FileTreeView}.
 	 * 
@@ -123,5 +110,47 @@ public class FileTreeViewDemo extends Application {
 		TreeView<File> fileTreeView = createFileTreeView();
 
 		root.setCenter(fileTreeView);
+	}
+
+	/**
+	 * @param primaryStage
+	 */
+	protected void stageSetOnShown(Stage primaryStage) {
+		primaryStage.setOnShown(new EventHandler<WindowEvent>() {
+
+			@Override
+			public void handle(WindowEvent event) {
+				try {
+					windowPrefs = new WindowPrefs(FileTreeViewDemo.class, primaryStage);
+				} catch (BackingStoreException e) {
+					System.err.println("FileTreeViewDemo.start(): caught: " + e.getMessage());
+					e.printStackTrace();
+					System.err.println("FileTreeViewDemo.start(): continuing . . .");
+				}
+			}
+			
+		});
+	}
+
+	/**
+	 * @param primaryStage
+	 * @param scene
+	 */
+	protected void stageSetScene(Stage primaryStage, Scene scene) {
+		primaryStage.setScene(scene);
+	}
+
+	/**
+	 * @param primaryStage
+	 */
+	protected void stageSetTitle(Stage primaryStage) {
+		primaryStage.setTitle("File TreeView Demo");
+	}
+
+	/**
+	 * @param primaryStage
+	 */
+	protected void stageShow(Stage primaryStage) {
+		primaryStage.show();
 	}
 }

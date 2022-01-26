@@ -13,6 +13,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import de.saxsys.mvvmfx.testingutils.jfxrunner.JfxRunner;
+import de.saxsys.mvvmfx.testingutils.jfxrunner.TestInJfxThread;
 import io.github.alantcote.clutilities.jmock.TestCaseWithJMock;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -28,6 +29,7 @@ public class FileIconFactoryTest extends TestCaseWithJMock {
 	 * Test method for {@link io.github.alantcote.clutilities.javafx.scene.control.FileIconFactory#getIcon(java.io.File)}.
 	 */
 	@Test
+	@TestInJfxThread
 	public void testGetIcon() {
 		final ImageView mockImageView = context.mock(ImageView.class, "mockImageView");
 		final Icon mockIcon = context.mock(Icon.class, "mockIcon");
@@ -53,6 +55,7 @@ public class FileIconFactoryTest extends TestCaseWithJMock {
 	 * Test method for {@link io.github.alantcote.clutilities.javafx.scene.control.FileIconFactory#getIconImage(javax.swing.Icon)}.
 	 */
 	@Test
+	@TestInJfxThread
 	public void testGetIconImage() {
 		final ImageIcon mockImageIcon = context.mock(ImageIcon.class, "mockImageIcon");
 		final BufferedImage mockBufferedImage = context.mock(BufferedImage.class, "mockBufferedImage");
@@ -86,6 +89,7 @@ public class FileIconFactoryTest extends TestCaseWithJMock {
 	 * Test method for {@link io.github.alantcote.clutilities.javafx.scene.control.FileIconFactory#getImageView(javax.swing.Icon)}.
 	 */
 	@Test
+	@TestInJfxThread
 	public void testGetImageView() {
 		final ImageView mockImageView = context.mock(ImageView.class, "mockImageView");
 		final Icon mockIcon = context.mock(Icon.class, "mockIcon");
@@ -116,6 +120,7 @@ public class FileIconFactoryTest extends TestCaseWithJMock {
 	 * Test method for {@link io.github.alantcote.clutilities.javafx.scene.control.FileIconFactory#newBufferedImage(java.awt.Image)}.
 	 */
 	@Test
+	@TestInJfxThread
 	public void testNewBufferedImage() {
 		final FileIconFactory fixture = new FileIconFactory();
 		final BufferedImage mockBufferedImage = context.mock(BufferedImage.class, "mockBufferedImage");

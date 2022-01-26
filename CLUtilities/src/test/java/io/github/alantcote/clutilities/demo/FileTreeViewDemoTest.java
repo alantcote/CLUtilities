@@ -10,12 +10,17 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import de.saxsys.mvvmfx.testingutils.jfxrunner.JfxRunner;
+import de.saxsys.mvvmfx.testingutils.jfxrunner.TestInJfxThread;
 import io.github.alantcote.clutilities.javafx.scene.control.FileTreeItem;
 import io.github.alantcote.clutilities.javafx.scene.control.FileTreeView;
 import io.github.alantcote.clutilities.jmock.TestCaseWithJMock;
 import javafx.application.HostServices;
+import javafx.application.Platform;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.event.EventType;
 import javafx.event.WeakEventHandler;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
@@ -125,10 +130,13 @@ public class FileTreeViewDemoTest extends TestCaseWithJMock {
 	 * {@link io.github.alantcote.clutilities.demo.FileTreeViewDemo#populateFileTreeViewPane(javafx.scene.layout.BorderPane)}.
 	 */
 	@Test
+	@TestInJfxThread
 	public void testPopulateFileTreeViewPane() {
-		final BorderPane realBorderPane = new BorderPane();
+		final BorderPane mockBorderPane = context.mock(BorderPane.class, "mockBorderPane");
 		@SuppressWarnings("unchecked")
 		final TreeView<File> mockTreeView = context.mock(TreeView.class, "mockTreeView");
+		@SuppressWarnings("unchecked")
+		final ObservableList<Node> mockObservableList = context.mock(ObservableList.class, "mockObservableList");
 		final FileTreeViewDemo fixture = new FileTreeViewDemo() {
 
 			@Override
@@ -138,7 +146,21 @@ public class FileTreeViewDemoTest extends TestCaseWithJMock {
 
 		};
 
-		fixture.populateFileTreeViewPane(realBorderPane);
+		context.checking(new Expectations() {
+			{
+				oneOf(mockBorderPane).getChildren();
+				will(returnValue(mockObservableList));
+
+				oneOf(mockObservableList).addListener(with(any(ListChangeListener.class)));
+
+				oneOf(mockBorderPane).getChildren();
+				will(returnValue(mockObservableList));
+
+				oneOf(mockObservableList).add(mockTreeView);
+			}
+		});
+
+		fixture.populateFileTreeViewPane(mockBorderPane);
 	}
 
 	/**
@@ -146,36 +168,64 @@ public class FileTreeViewDemoTest extends TestCaseWithJMock {
 	 * {@link io.github.alantcote.clutilities.demo.FileTreeViewDemo#start(javafx.stage.Stage)}.
 	 */
 	@Test
+	@TestInJfxThread
 	public void testStartStage() {
-		final BorderPane mockBorderPane = context.mock(BorderPane.class, "mockBorderPane");
-		final Scene mockScene = context.mock(Scene.class, "mockScene");
-		final Stage mockStage = context.mock(Stage.class, "mockStage");
-		final FileTreeViewDemo fixture = new FileTreeViewDemo() {
+		Platform.runLater(new Runnable() {
 
 			@Override
-			protected BorderPane newBorderPane() {
-				return mockBorderPane;
-			}
+			public void run() {
+				final BorderPane mockBorderPane = context.mock(BorderPane.class, "mockBorderPane");
+				final Scene mockScene = context.mock(Scene.class, "mockScene");
+				final Stage mockStage = context.mock(Stage.class, "mockStage");
+				final FileTreeViewDemo fixture = new FileTreeViewDemo() {
 
-			@Override
-			protected Scene newScene(BorderPane root) {
-				return mockScene;
-			}
+					@Override
+					protected BorderPane newBorderPane() {
+						return mockBorderPane;
+					}
 
-			@Override
-			protected void populateFileTreeViewPane(BorderPane root) {
-				// NOTHING
-			}
+					@Override
+					protected Scene newScene(BorderPane root) {
+						return mockScene;
+					}
 
-		};
+					@Override
+					protected void populateFileTreeViewPane(BorderPane root) {
+						// NOTHING
+					}
 
-		context.checking(new Expectations() {
-			{
-				oneOf(mockBorderPane).setUserData(with(any(HostServices.class)));
+					@Override
+					protected void stageSetOnShown(Stage primaryStage) {
+						// NOTHING
+					}
+
+					@Override
+					protected void stageSetScene(Stage primaryStage, Scene scene) {
+						// NOTHING
+					}
+
+					@Override
+					protected void stageSetTitle(Stage primaryStage) {
+						// NOTHING
+					}
+
+					@Override
+					protected void stageShow(Stage primaryStage) {
+						// NOTHING
+					}
+
+				};
+
+				context.checking(new Expectations() {
+					{
+						oneOf(mockBorderPane).setUserData(with(any(HostServices.class)));
+					}
+				});
+
+				fixture.start(mockStage);
 			}
+			
 		});
-
-		fixture.start(mockStage);
 	}
 
 }
