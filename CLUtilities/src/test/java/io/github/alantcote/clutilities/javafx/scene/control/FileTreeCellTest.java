@@ -4,20 +4,15 @@ import static org.junit.Assert.*;
 
 import java.io.File;
 
-import org.jmock.Expectations;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
-import de.saxsys.mvvmfx.testingutils.jfxrunner.JfxRunner;
-import io.github.alantcote.clutilities.jmock.TestCaseWithJMock;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 
 /**
  * Test case for {@link io.github.alantcote.clutilities.javafx.scene.control.FileTreeCell}.
  */
-@RunWith(JfxRunner.class)
-public class FileTreeCellTest extends TestCaseWithJMock {
+public class FileTreeCellTest {
 
 	/**
 	 * Test method for
@@ -25,8 +20,8 @@ public class FileTreeCellTest extends TestCaseWithJMock {
 	 */
 	@Test
 	public void testDisplayName() {
-		final FileIconFactory mockFileIconFactory = context.mock(FileIconFactory.class, "mockFileIconFactory");
-		FileTreeCell fixture = new FileTreeCell(mockFileIconFactory);
+		final FileIconFactory fileIconFactory = new FileIconFactory();
+		FileTreeCell fixture = new FileTreeCell(fileIconFactory);
 		final String displayName = "mock.txt";
 		final File realFile = new File(displayName);
 
@@ -39,11 +34,11 @@ public class FileTreeCellTest extends TestCaseWithJMock {
 	 */
 	@Test
 	public void testFileTreeCell() {
-		final FileIconFactory mockFileIconFactory = context.mock(FileIconFactory.class, "mockFileIconFactory");
-		FileTreeCell fixture = new FileTreeCell(mockFileIconFactory);
+		final FileIconFactory fileIconFactory = new FileIconFactory();
+		FileTreeCell fixture = new FileTreeCell(fileIconFactory);
 
 		assertNotNull(fixture);
-		assertEquals(mockFileIconFactory, fixture.fileIconFactory);
+		assertEquals(fileIconFactory, fixture.fileIconFactory);
 	}
 
 	/**
@@ -52,18 +47,10 @@ public class FileTreeCellTest extends TestCaseWithJMock {
 	 */
 	@Test
 	public void testGetIconImage() {
-		final FileIconFactory mockFileIconFactory = context.mock(FileIconFactory.class, "mockFileIconFactory");
-		FileTreeCell fixture = new FileTreeCell(mockFileIconFactory);
-		final String displayName = "mock.txt";
+		final FileIconFactory fileIconFactory = new FileIconFactory();
+		FileTreeCell fixture = new FileTreeCell(fileIconFactory);
+		final String displayName = ".";
 		final File realFile = new File(displayName);
-		final ImageView mockImageView = context.mock(ImageView.class, "mockImageView");
-
-		context.checking(new Expectations() {
-			{
-				oneOf(mockFileIconFactory).getIcon(realFile);
-				will(returnValue(mockImageView));
-			}
-		});
 
 		assertNotNull(fixture.getIconImage(realFile));
 	}
@@ -74,8 +61,8 @@ public class FileTreeCellTest extends TestCaseWithJMock {
 	 */
 	@Test
 	public void testNewTooltip() {
-		final FileIconFactory mockFileIconFactory = context.mock(FileIconFactory.class, "mockFileIconFactory");
-		FileTreeCell fixture = new FileTreeCell(mockFileIconFactory);
+		final FileIconFactory fileIconFactory = new FileIconFactory();
+		FileTreeCell fixture = new FileTreeCell(fileIconFactory);
 		final String displayName = "mock.txt";
 
 		assertNotNull(fixture.newTooltip(displayName));
@@ -87,12 +74,12 @@ public class FileTreeCellTest extends TestCaseWithJMock {
 	 */
 	@Test
 	public void testUpdateItemFileBoolean() {
-		final FileIconFactory mockFileIconFactory = context.mock(FileIconFactory.class, "mockFileIconFactory");
+		final FileIconFactory fileIconFactory = new FileIconFactory();
 		final String displayName = "mock.txt";
 		final File realFile = new File(displayName);
-		final ImageView mockImageView = context.mock(ImageView.class, "mockImageView");
-		final Tooltip mockTooltip = context.mock(Tooltip.class, "mockTooltip");
-		FileTreeCell fixture = new FileTreeCell(mockFileIconFactory) {
+		final ImageView imageView = new ImageView();
+		final Tooltip tooltip = new Tooltip();
+		FileTreeCell fixture = new FileTreeCell(fileIconFactory) {
 
 			@Override
 			protected String displayName(File item) {
@@ -101,12 +88,12 @@ public class FileTreeCellTest extends TestCaseWithJMock {
 
 			@Override
 			protected ImageView getIconImage(File item) {
-				return mockImageView;
+				return imageView;
 			}
 
 			@Override
 			protected Tooltip newTooltip(String presText) {
-				return mockTooltip;
+				return tooltip;
 			}
 
 		};
@@ -114,8 +101,8 @@ public class FileTreeCellTest extends TestCaseWithJMock {
 		fixture.updateItem(realFile, false);
 
 		assertEquals(displayName, fixture.getText());
-		assertEquals(mockImageView, fixture.getGraphic());
-		assertEquals(mockTooltip, fixture.getTooltip());
+		assertEquals(imageView, fixture.getGraphic());
+		assertEquals(tooltip, fixture.getTooltip());
 	}
 
 }

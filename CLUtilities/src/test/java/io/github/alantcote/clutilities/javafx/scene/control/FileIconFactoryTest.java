@@ -8,13 +8,8 @@ import java.io.File;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
-import org.jmock.Expectations;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
-import de.saxsys.mvvmfx.testingutils.jfxrunner.JfxRunner;
-import de.saxsys.mvvmfx.testingutils.jfxrunner.TestInJfxThread;
-import io.github.alantcote.clutilities.jmock.TestCaseWithJMock;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
@@ -22,87 +17,70 @@ import javafx.scene.image.WritableImage;
 /**
  * Test case for {@link io.github.alantcote.clutilities.javafx.scene.control.FileIconFactory}.
  */
-@RunWith(JfxRunner.class)
-public class FileIconFactoryTest extends TestCaseWithJMock {
+public class FileIconFactoryTest {
 
 	/**
 	 * Test method for {@link io.github.alantcote.clutilities.javafx.scene.control.FileIconFactory#getIcon(java.io.File)}.
 	 */
 	@Test
-	@TestInJfxThread
 	public void testGetIcon() {
-		final ImageView mockImageView = context.mock(ImageView.class, "mockImageView");
-		final Icon mockIcon = context.mock(Icon.class, "mockIcon");
-		final File realFile = new File(".");
+		final ImageView imageView = new ImageView();
+		final Icon icon = new ImageIcon();
+		final File file = new File(".");
 		final FileIconFactory fixture = new FileIconFactory() {
 
 			@Override
 			protected ImageView getImageView(Icon swingIcon) {
-				return mockImageView;
+				assertTrue(icon == swingIcon);
+				
+				return imageView;
 			}
 
 			@Override
 			protected Icon getSystemIcon(File aFile) {
-				return mockIcon;
+				assertTrue(file == aFile);
+				
+				return icon;
 			}
 			
 		};
 		
-		assertEquals(mockImageView, fixture.getIcon(realFile));
+		assertEquals(imageView, fixture.getIcon(file));
 	}
 
 	/**
 	 * Test method for {@link io.github.alantcote.clutilities.javafx.scene.control.FileIconFactory#getIconImage(javax.swing.Icon)}.
 	 */
 	@Test
-	@TestInJfxThread
 	public void testGetIconImage() {
-		final ImageIcon mockImageIcon = context.mock(ImageIcon.class, "mockImageIcon");
-		final BufferedImage mockBufferedImage = context.mock(BufferedImage.class, "mockBufferedImage");
-		final Image mockImage = context.mock(Image.class, "mockImage");
-		final ImageView mockImageView = context.mock(ImageView.class, "mockImageView");
-		final FileIconFactory fixture = new FileIconFactory() {
+		final BufferedImage bufferedImage = new BufferedImage(20, 20, BufferedImage.TYPE_INT_RGB);
+		final Image image = new WritableImage(10,10);
+		final ImageView imageView = new ImageView();
+		final FileIconFactory fixture = new FileIconFactory();
 
-			@Override
-			protected ImageView newImageView(Image fxImage) {
-				return mockImageView;
-			}
-
-			@Override
-			protected Image swingFXUtilsToFXImage(BufferedImage bImg, WritableImage wimg) {
-				return mockImage;
-			}
-			
-		};
-
-		context.checking(new Expectations() {
-			{
-				oneOf(mockImageIcon).getImage();
-				will(returnValue(mockBufferedImage));
-			}
-		});
-
-		assertEquals(mockImageView, fixture.getIconImage(mockImageIcon));
+		final Icon icon = fixture.getSystemIcon(new File("."));
+		assertNotNull(fixture.getIconImage(icon));
 	}
 
 	/**
 	 * Test method for {@link io.github.alantcote.clutilities.javafx.scene.control.FileIconFactory#getImageView(javax.swing.Icon)}.
 	 */
 	@Test
-	@TestInJfxThread
 	public void testGetImageView() {
-		final ImageView mockImageView = context.mock(ImageView.class, "mockImageView");
-		final Icon mockIcon = context.mock(Icon.class, "mockIcon");
+		final ImageView imageView = new ImageView();
+		final Icon icon = new ImageIcon();
 		final FileIconFactory fixture = new FileIconFactory() {
 
 			@Override
 			protected ImageView getIconImage(Icon swingIcon) {
-				return mockImageView;
+				assertTrue(icon == swingIcon);
+				
+				return imageView;
 			}
 			
 		};
 		
-		assertEquals(mockImageView, fixture.getImageView(mockIcon));
+		assertTrue(imageView == fixture.getImageView(icon));
 	}
 
 	/**
@@ -120,22 +98,11 @@ public class FileIconFactoryTest extends TestCaseWithJMock {
 	 * Test method for {@link io.github.alantcote.clutilities.javafx.scene.control.FileIconFactory#newBufferedImage(java.awt.Image)}.
 	 */
 	@Test
-	@TestInJfxThread
 	public void testNewBufferedImage() {
 		final FileIconFactory fixture = new FileIconFactory();
-		final BufferedImage mockBufferedImage = context.mock(BufferedImage.class, "mockBufferedImage");
-
-		context.checking(new Expectations() {
-			{
-				oneOf(mockBufferedImage).getWidth(null);
-				will(returnValue(15));
-
-				oneOf(mockBufferedImage).getHeight(null);
-				will(returnValue(15));
-			}
-		});
+		final java.awt.Image image = new java.awt.image.BufferedImage(10, 20, java.awt.image.BufferedImage.TYPE_INT_RGB);
 		
-		assertNotNull(fixture.newBufferedImage(mockBufferedImage));
+		assertNotNull(fixture.newBufferedImage(image));
 	}
 
 	/**

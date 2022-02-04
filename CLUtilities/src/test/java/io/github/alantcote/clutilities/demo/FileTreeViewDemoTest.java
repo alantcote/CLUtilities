@@ -1,11 +1,9 @@
 package io.github.alantcote.clutilities.demo;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 import java.io.File;
 
-import org.jmock.Expectations;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -13,14 +11,6 @@ import de.saxsys.mvvmfx.testingutils.jfxrunner.JfxRunner;
 import de.saxsys.mvvmfx.testingutils.jfxrunner.TestInJfxThread;
 import io.github.alantcote.clutilities.javafx.scene.control.FileTreeItem;
 import io.github.alantcote.clutilities.javafx.scene.control.FileTreeView;
-import io.github.alantcote.clutilities.jmock.TestCaseWithJMock;
-import javafx.application.HostServices;
-import javafx.application.Platform;
-import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
-import javafx.event.EventType;
-import javafx.event.WeakEventHandler;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
@@ -31,7 +21,7 @@ import javafx.stage.Stage;
  * Test case for {@link io.github.alantcote.clutilities.demo.FileTreeViewDemo}.
  */
 @RunWith(JfxRunner.class)
-public class FileTreeViewDemoTest extends TestCaseWithJMock {
+public class FileTreeViewDemoTest {
 
 	/**
 	 * Test method for
@@ -39,25 +29,27 @@ public class FileTreeViewDemoTest extends TestCaseWithJMock {
 	 */
 	@Test
 	public void testCreateFileTreeView() {
-		final FileTreeItem mockFileTreeItem = context.mock(FileTreeItem.class, "mockFileTreeItem");
-		final FileTreeView mockFileTreeView = context.mock(FileTreeView.class, "mockFileTreeView");
-		final FileTreeViewDemo fixture = new FileTreeViewDemo() {
+		final FileTreeItem fileTreeItem = new FileTreeItem(null);
+		final FileTreeView fileTreeView = new FileTreeView(fileTreeItem);
+		FileTreeViewDemo fixture = new FileTreeViewDemo() {
 
 			@Override
 			protected FileTreeItem newFileTreeItem() {
-				return mockFileTreeItem;
+				return fileTreeItem;
 			}
 
 			@Override
 			protected FileTreeView newFileTreeView(TreeItem<File> rootFileTreeItem) {
-				return mockFileTreeView;
+				assertTrue(fileTreeItem == rootFileTreeItem);
+				
+				return fileTreeView;
 			}
 
 		};
 
 		TreeView<File> result = fixture.createFileTreeView();
 
-		assertEquals(mockFileTreeView, result);
+		assertEquals(fileTreeView, result);
 	}
 
 	/**
@@ -94,23 +86,12 @@ public class FileTreeViewDemoTest extends TestCaseWithJMock {
 	 * Test method for
 	 * {@link io.github.alantcote.clutilities.demo.FileTreeViewDemo#newFileTreeView(javafx.scene.control.TreeItem)}.
 	 */
-	@SuppressWarnings("unchecked")
 	@Test
 	public void testNewFileTreeView() {
 		final FileTreeViewDemo fixture = new FileTreeViewDemo();
-		final TreeItem<File> mockFileTreeItem = context.mock(TreeItem.class, "mockFileTreeItem");
+		final TreeItem<File> fileTreeItem = new FileTreeItem(null);
 
-		context.checking(new Expectations() {
-			{
-				oneOf(mockFileTreeItem).addEventHandler(with(any(EventType.class)), with(any(WeakEventHandler.class)));
-
-				oneOf(mockFileTreeItem).addEventHandler(with(any(EventType.class)), with(any(WeakEventHandler.class)));
-
-				oneOf(mockFileTreeItem).addEventHandler(with(any(EventType.class)), with(any(WeakEventHandler.class)));
-			}
-		});
-
-		assertNotNull(fixture.newFileTreeView(mockFileTreeItem));
+		assertNotNull(fixture.newFileTreeView(fileTreeItem));
 	}
 
 	/**
@@ -120,9 +101,9 @@ public class FileTreeViewDemoTest extends TestCaseWithJMock {
 	@Test
 	public void testNewScene() {
 		final FileTreeViewDemo fixture = new FileTreeViewDemo();
-		final BorderPane mockBorderPane = new BorderPane();
+		final BorderPane borderPane = new BorderPane();
 
-		assertNotNull(fixture.newScene(mockBorderPane));
+		assertNotNull(fixture.newScene(borderPane));
 	}
 
 	/**
@@ -130,37 +111,22 @@ public class FileTreeViewDemoTest extends TestCaseWithJMock {
 	 * {@link io.github.alantcote.clutilities.demo.FileTreeViewDemo#populateFileTreeViewPane(javafx.scene.layout.BorderPane)}.
 	 */
 	@Test
-	@TestInJfxThread
 	public void testPopulateFileTreeViewPane() {
-		final BorderPane mockBorderPane = context.mock(BorderPane.class, "mockBorderPane");
-		@SuppressWarnings("unchecked")
-		final TreeView<File> mockTreeView = context.mock(TreeView.class, "mockTreeView");
-		@SuppressWarnings("unchecked")
-		final ObservableList<Node> mockObservableList = context.mock(ObservableList.class, "mockObservableList");
+		final FileTreeItem fileTreeItem = new FileTreeItem(null);
+		final TreeView<File> treeView = new FileTreeView(fileTreeItem);
+		final BorderPane borderPane = new BorderPane();
 		final FileTreeViewDemo fixture = new FileTreeViewDemo() {
 
 			@Override
 			protected TreeView<File> createFileTreeView() {
-				return mockTreeView;
+				return treeView;
 			}
 
 		};
 
-		context.checking(new Expectations() {
-			{
-				oneOf(mockBorderPane).getChildren();
-				will(returnValue(mockObservableList));
-
-				oneOf(mockObservableList).addListener(with(any(ListChangeListener.class)));
-
-				oneOf(mockBorderPane).getChildren();
-				will(returnValue(mockObservableList));
-
-				oneOf(mockObservableList).add(mockTreeView);
-			}
-		});
-
-		fixture.populateFileTreeViewPane(mockBorderPane);
+		fixture.populateFileTreeViewPane(borderPane);
+		
+		assertTrue(treeView == borderPane.getCenter());
 	}
 
 	/**
@@ -170,62 +136,52 @@ public class FileTreeViewDemoTest extends TestCaseWithJMock {
 	@Test
 	@TestInJfxThread
 	public void testStartStage() {
-		Platform.runLater(new Runnable() {
+		final BorderPane borderPane = new BorderPane();
+		final Scene scene = new Scene(borderPane);
+		final Stage stage = new Stage();
+		final FileTreeViewDemo fixture = new FileTreeViewDemo() {
 
 			@Override
-			public void run() {
-				final BorderPane mockBorderPane = context.mock(BorderPane.class, "mockBorderPane");
-				final Scene mockScene = context.mock(Scene.class, "mockScene");
-				final Stage mockStage = context.mock(Stage.class, "mockStage");
-				final FileTreeViewDemo fixture = new FileTreeViewDemo() {
-
-					@Override
-					protected BorderPane newBorderPane() {
-						return mockBorderPane;
-					}
-
-					@Override
-					protected Scene newScene(BorderPane root) {
-						return mockScene;
-					}
-
-					@Override
-					protected void populateFileTreeViewPane(BorderPane root) {
-						// NOTHING
-					}
-
-					@Override
-					protected void stageSetOnShown(Stage primaryStage) {
-						// NOTHING
-					}
-
-					@Override
-					protected void stageSetScene(Stage primaryStage, Scene scene) {
-						// NOTHING
-					}
-
-					@Override
-					protected void stageSetTitle(Stage primaryStage) {
-						// NOTHING
-					}
-
-					@Override
-					protected void stageShow(Stage primaryStage) {
-						// NOTHING
-					}
-
-				};
-
-				context.checking(new Expectations() {
-					{
-						oneOf(mockBorderPane).setUserData(with(any(HostServices.class)));
-					}
-				});
-
-				fixture.start(mockStage);
+			protected BorderPane newBorderPane() {
+				return borderPane;
 			}
-			
-		});
+
+			@Override
+			protected Scene newScene(BorderPane root) {
+				assertTrue(borderPane == root);
+				
+				return scene;
+			}
+
+			@Override
+			protected void populateFileTreeViewPane(BorderPane root) {
+				assertTrue(borderPane == root);
+			}
+
+			@Override
+			protected void stageSetOnShown(Stage primaryStage) {
+				assertTrue(stage == primaryStage);
+			}
+
+			@Override
+			protected void stageSetScene(Stage primaryStage, Scene aScene) {
+				assertTrue(stage == primaryStage);
+				assertTrue(scene == aScene);
+			}
+
+			@Override
+			protected void stageSetTitle(Stage primaryStage) {
+				assertTrue(stage == primaryStage);
+			}
+
+			@Override
+			protected void stageShow(Stage primaryStage) {
+				assertTrue(stage == primaryStage);
+			}
+
+		};
+
+		fixture.start(stage);
 	}
 
 }

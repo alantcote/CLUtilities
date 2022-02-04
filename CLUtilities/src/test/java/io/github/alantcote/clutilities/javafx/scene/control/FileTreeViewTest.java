@@ -2,20 +2,15 @@ package io.github.alantcote.clutilities.javafx.scene.control;
 
 import static org.junit.Assert.*;
 
-import org.jmock.Expectations;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
-import de.saxsys.mvvmfx.testingutils.jfxrunner.JfxRunner;
-import io.github.alantcote.clutilities.jmock.TestCaseWithJMock;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
 
 /**
  * Test case for {@link io.github.alantcote.clutilities.javafx.scene.control.FileTreeView}.
  */
-@RunWith(JfxRunner.class)
-public class FileTreeViewTest extends TestCaseWithJMock {
+public class FileTreeViewTest {
 
 	/**
 	 * Test method for
@@ -24,45 +19,22 @@ public class FileTreeViewTest extends TestCaseWithJMock {
 	@SuppressWarnings("unchecked")
 	@Test
 	public void testFileTreeView() {
-		final FileTreeItem mockFileTreeItem = context.mock(FileTreeItem.class, "mockFileTreeItem");
-
-		context.checking(new Expectations() {
-			{
-				oneOf(mockFileTreeItem).addEventHandler(with(any(EventType.class)), with(any(EventHandler.class)));
-
-				oneOf(mockFileTreeItem).addEventHandler(with(any(EventType.class)), with(any(EventHandler.class)));
-
-				oneOf(mockFileTreeItem).addEventHandler(with(any(EventType.class)), with(any(EventHandler.class)));
-			}
-		});
-
-		FileTreeView fixture = new FileTreeView(mockFileTreeItem);
+		final FileTreeItem fileTreeItem = new FileTreeItem(null);
+		FileTreeView fixture = new FileTreeView(fileTreeItem);
 
 		assertNotNull(fixture);
 
-		assertEquals(mockFileTreeItem, fixture.getRoot());
+		assertEquals(fileTreeItem, fixture.getRoot());
 	}
 
 	/**
 	 * Test method for
 	 * {@link io.github.alantcote.clutilities.javafx.scene.control.FileTreeView#newFileIconFactory()}.
 	 */
-	@SuppressWarnings("unchecked")
 	@Test
 	public void testNewFileIconFactory() {
-		final FileTreeItem mockFileTreeItem = context.mock(FileTreeItem.class, "mockFileTreeItem");
-
-		context.checking(new Expectations() {
-			{
-				oneOf(mockFileTreeItem).addEventHandler(with(any(EventType.class)), with(any(EventHandler.class)));
-
-				oneOf(mockFileTreeItem).addEventHandler(with(any(EventType.class)), with(any(EventHandler.class)));
-
-				oneOf(mockFileTreeItem).addEventHandler(with(any(EventType.class)), with(any(EventHandler.class)));
-			}
-		});
-
-		FileTreeView fixture = new FileTreeView(mockFileTreeItem);
+		final FileTreeItem fileTreeItem = new FileTreeItem(null);
+		FileTreeView fixture = new FileTreeView(fileTreeItem);
 
 		assertNotNull(fixture.newFileIconFactory());
 	}
@@ -74,22 +46,11 @@ public class FileTreeViewTest extends TestCaseWithJMock {
 	@SuppressWarnings("unchecked")
 	@Test
 	public void testNewFileTreeCellFactory() {
-		final FileTreeItem mockFileTreeItem = context.mock(FileTreeItem.class, "mockFileTreeItem");
-		final FileIconFactory mockFileIconFactory = context.mock(FileIconFactory.class, "mockFileIconFactory");
+		final FileTreeItem fileTreeItem = new FileTreeItem(null);
+		final FileIconFactory fileIconFactory = new FileIconFactory();
+		FileTreeView fixture = new FileTreeView(fileTreeItem);
 
-		context.checking(new Expectations() {
-			{
-				oneOf(mockFileTreeItem).addEventHandler(with(any(EventType.class)), with(any(EventHandler.class)));
-
-				oneOf(mockFileTreeItem).addEventHandler(with(any(EventType.class)), with(any(EventHandler.class)));
-
-				oneOf(mockFileTreeItem).addEventHandler(with(any(EventType.class)), with(any(EventHandler.class)));
-			}
-		});
-
-		FileTreeView fixture = new FileTreeView(mockFileTreeItem);
-
-		assertNotNull(fixture.newFileTreeCellFactory(mockFileIconFactory));
+		assertNotNull(fixture.newFileTreeCellFactory(fileIconFactory));
 	}
 
 }

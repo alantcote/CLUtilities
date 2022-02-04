@@ -5,19 +5,15 @@ import static org.junit.Assert.*;
 import java.io.File;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
-import de.saxsys.mvvmfx.testingutils.jfxrunner.JfxRunner;
 import io.github.alantcote.clutilities.javafx.scene.control.FileIconFactory;
 import io.github.alantcote.clutilities.javafx.scene.control.FileTreeCell;
-import io.github.alantcote.clutilities.jmock.TestCaseWithJMock;
 import javafx.scene.control.TreeView;
 
 /**
  * Test case for {@link io.github.alantcote.clutilities.javafx.util.callback.FileTreeCellFactory}.
  */
-@RunWith(JfxRunner.class)
-public class FileTreeCellFactoryTest extends TestCaseWithJMock {
+public class FileTreeCellFactoryTest {
 
 	/**
 	 * Test method for
@@ -25,20 +21,19 @@ public class FileTreeCellFactoryTest extends TestCaseWithJMock {
 	 */
 	@Test
 	public void testCall() {
-		final FileIconFactory mockFileIconFactory = context.mock(FileIconFactory.class, "mockFileIconFactory");
-		@SuppressWarnings("unchecked")
-		final TreeView<File> mockTreeView = context.mock(TreeView.class, "mockTreeView");
-		final FileTreeCell mockFileTreeCell = context.mock(FileTreeCell.class, "mockFileTreeCell");
-		FileTreeCellFactory fixture = new FileTreeCellFactory(mockFileIconFactory) {
+		final FileIconFactory fileIconFactory = new FileIconFactory();
+		final TreeView<File> treeView = new TreeView<File>();
+		final FileTreeCell fileTreeCell = new FileTreeCell(fileIconFactory);
+		FileTreeCellFactory fixture = new FileTreeCellFactory(fileIconFactory) {
 
 			@Override
 			protected FileTreeCell newFileTreeCell() {
-				return mockFileTreeCell;
+				return fileTreeCell;
 			}
 
 		};
 
-		assertEquals(mockFileTreeCell, fixture.call(mockTreeView));
+		assertEquals(fileTreeCell, fixture.call(treeView));
 	}
 
 	/**
@@ -47,12 +42,12 @@ public class FileTreeCellFactoryTest extends TestCaseWithJMock {
 	 */
 	@Test
 	public void testFileTreeCellFactory() {
-		final FileIconFactory mockFileIconFactory = context.mock(FileIconFactory.class, "mockFileIconFactory");
-		FileTreeCellFactory fixture = new FileTreeCellFactory(mockFileIconFactory);
+		final FileIconFactory fileIconFactory = new FileIconFactory();
+		FileTreeCellFactory fixture = new FileTreeCellFactory(fileIconFactory);
 
 		assertNotNull(fixture);
 
-		assertEquals(mockFileIconFactory, fixture.fileIconFactory);
+		assertEquals(fileIconFactory, fixture.fileIconFactory);
 	}
 
 	/**
@@ -61,8 +56,8 @@ public class FileTreeCellFactoryTest extends TestCaseWithJMock {
 	 */
 	@Test
 	public void testNewFileTreeCell() {
-		final FileIconFactory mockFileIconFactory = context.mock(FileIconFactory.class, "mockFileIconFactory");
-		FileTreeCellFactory fixture = new FileTreeCellFactory(mockFileIconFactory);
+		final FileIconFactory fileIconFactory = new FileIconFactory();
+		FileTreeCellFactory fixture = new FileTreeCellFactory(fileIconFactory);
 
 		assertNotNull(fixture.newFileTreeCell());
 	}

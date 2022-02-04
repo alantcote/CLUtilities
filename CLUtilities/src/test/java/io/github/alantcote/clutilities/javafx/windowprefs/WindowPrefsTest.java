@@ -1,7 +1,6 @@
 package io.github.alantcote.clutilities.javafx.windowprefs;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
@@ -10,7 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import de.saxsys.mvvmfx.testingutils.jfxrunner.JfxRunner;
-import io.github.alantcote.clutilities.jmock.TestCaseWithJMock;
+import de.saxsys.mvvmfx.testingutils.jfxrunner.TestInJfxThread;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.stage.Stage;
 
@@ -18,7 +17,7 @@ import javafx.stage.Stage;
  * Test case for {@link cotelab.dupfilefinder2.WindowPrefs#WindowPrefs}.
  */
 @RunWith(JfxRunner.class)
-public class WindowPrefsTest extends TestCaseWithJMock {
+public class WindowPrefsTest {
 	/**
 	 * Test method for
 	 * {@link cotelab.dupfilefinder2.WindowPrefs#establishPreferencesNode()}.
@@ -26,14 +25,15 @@ public class WindowPrefsTest extends TestCaseWithJMock {
 	 * @throws BackingStoreException if test throws one.
 	 */
 	@Test
+	@TestInJfxThread
 	public void testEstablishPreferencesNode() throws BackingStoreException {
 		Class<?> clazz = getClass();
-		Stage mockStage = context.mock(Stage.class, "mockStage");
+		Stage stage = new Stage();
 		final SimpleIntegerProperty igpCount = new SimpleIntegerProperty(0);
 		final SimpleIntegerProperty pnCount = new SimpleIntegerProperty(0);
 		final SimpleIntegerProperty psCount = new SimpleIntegerProperty(0);
 		final SimpleIntegerProperty urCount = new SimpleIntegerProperty(0);
-		WindowPrefs fixture = new WindowPrefs(clazz, mockStage) {
+		WindowPrefs fixture = new WindowPrefs(clazz, stage) {
 
 			@Override
 			protected void inizGeometryPrefs() {
@@ -86,12 +86,13 @@ public class WindowPrefsTest extends TestCaseWithJMock {
 	 * @throws BackingStoreException if the test code throws one.
 	 */
 	@Test
+	@TestInJfxThread
 	public void testNewMetricListener() throws BackingStoreException {
 		Class<?> clazz = getClass();
-		Stage mockStage = context.mock(Stage.class, "mockStage");
+		Stage stage = new Stage();
 		final SimpleIntegerProperty epnCount = new SimpleIntegerProperty(0);
 		final SimpleIntegerProperty igpCount = new SimpleIntegerProperty(0);
-		WindowPrefs fixture = new WindowPrefs(clazz, mockStage) {
+		WindowPrefs fixture = new WindowPrefs(clazz, stage) {
 
 			@Override
 			protected void establishPreferencesNode() throws BackingStoreException {
@@ -113,10 +114,16 @@ public class WindowPrefsTest extends TestCaseWithJMock {
 
 	/**
 	 * Test method for {@link cotelab.dupfilefinder2.WindowPrefs#userRoot()}.
+	 * @throws BackingStoreException 
 	 */
 	@Test
-	public void testUserRoot() {
-		// I know of no practical way of unit-testing this method.
+	@TestInJfxThread
+	public void testUserRoot() throws BackingStoreException {
+		Class<?> clazz = getClass();
+		Stage stage = new Stage();
+		WindowPrefs fixture = new WindowPrefs(clazz, stage);
+		
+		assertEquals(Preferences.userRoot(), fixture.userRoot());
 	}
 
 	/**
@@ -126,13 +133,14 @@ public class WindowPrefsTest extends TestCaseWithJMock {
 	 * @throws BackingStoreException if test throws one.
 	 */
 	@Test
+	@TestInJfxThread
 	public void testWindowPrefs() throws BackingStoreException {
 		Class<?> clazz = getClass();
-		Stage mockStage = context.mock(Stage.class, "mockStage");
+		Stage stage = new Stage();
 		final SimpleIntegerProperty epnCount = new SimpleIntegerProperty(0);
 		final SimpleIntegerProperty igpCount = new SimpleIntegerProperty(0);
 		@SuppressWarnings("unused")
-		WindowPrefs fixture = new WindowPrefs(clazz, mockStage) {
+		WindowPrefs fixture = new WindowPrefs(clazz, stage) {
 
 			@Override
 			protected void establishPreferencesNode() throws BackingStoreException {

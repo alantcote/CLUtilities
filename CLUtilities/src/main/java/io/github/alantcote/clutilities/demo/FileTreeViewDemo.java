@@ -28,6 +28,9 @@ public class FileTreeViewDemo extends Application {
 		launch(args);
 	}
 
+	/**
+	 * Persistent window geometry support.
+	 */
 	protected WindowPrefs windowPrefs = null;
 
 	/**
