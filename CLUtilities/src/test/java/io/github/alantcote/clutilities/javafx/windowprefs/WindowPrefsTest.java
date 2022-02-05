@@ -119,7 +119,7 @@ public class WindowPrefsTest {
 	@Test
 	@TestInJfxThread
 	public void testUserRoot() throws BackingStoreException {
-		Class<?> clazz = getClass();
+		Class<?> clazz = WindowPrefs.class;
 		Stage stage = new Stage();
 		WindowPrefs fixture = new WindowPrefs(clazz, stage);
 		

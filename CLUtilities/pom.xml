@@ -3,7 +3,7 @@
 
 	<groupId>io.github.alantcote</groupId>
 	<artifactId>clutilities</artifactId>
-	<version>0.1.0-SNAPSHOT</version>
+	<version>0.2.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>${project.groupId}:${project.artifactId}</name>
@@ -27,7 +27,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<openjfx.version>18-ea+8</openjfx.version>
+		<openjfx.version>18-ea+10</openjfx.version>
 	</properties>
 
 	<distributionManagement>
