@@ -4,7 +4,6 @@ import java.util.Optional;
 import java.util.prefs.BackingStoreException;
 
 import io.github.alantcote.clutilities.javafx.scene.control.ExceptionAlert;
-import io.github.alantcote.clutilities.javafx.scene.control.FileTreeView;
 import io.github.alantcote.clutilities.javafx.windowprefs.WindowPrefs;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -21,7 +20,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 /**
- * An application to demo {@link FileTreeView}.
+ * An application to demo {@link ExceptionAlert}.
  */
 public class AlertsDemo extends Application {
 	/**
