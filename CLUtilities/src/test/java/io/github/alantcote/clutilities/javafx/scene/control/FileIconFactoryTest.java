@@ -2,7 +2,6 @@ package io.github.alantcote.clutilities.javafx.scene.control;
 
 import static org.junit.Assert.*;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
 
 import javax.swing.Icon;
@@ -10,9 +9,7 @@ import javax.swing.ImageIcon;
 
 import org.junit.Test;
 
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.image.WritableImage;
 
 /**
  * Test case for {@link io.github.alantcote.clutilities.javafx.scene.control.FileIconFactory}.
@@ -53,9 +50,6 @@ public class FileIconFactoryTest {
 	 */
 	@Test
 	public void testGetIconImage() {
-		final BufferedImage bufferedImage = new BufferedImage(20, 20, BufferedImage.TYPE_INT_RGB);
-		final Image image = new WritableImage(10,10);
-		final ImageView imageView = new ImageView();
 		final FileIconFactory fixture = new FileIconFactory();
 
 		final Icon icon = fixture.getSystemIcon(new File("."));

@@ -3,10 +3,8 @@
  */
 package io.github.alantcote.clutilities.javafx.scene.control;
 
-import java.io.File;
 import java.nio.file.Path;
 
-import io.github.alantcote.clutilities.javafx.util.callback.FileTreeCellFactory;
 import io.github.alantcote.clutilities.javafx.util.callback.PathTreeCellFactory;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
@@ -39,6 +37,7 @@ public class PathTreeView extends TreeView<Path> {
 
 	/**
 	 * Manufacture a new {@link PathTreeCellFactory}.
+	 * 
 	 * @param pathIconFactory the {@link PathIconFactory} to use.
 	 * @return the new object.
 	 */
