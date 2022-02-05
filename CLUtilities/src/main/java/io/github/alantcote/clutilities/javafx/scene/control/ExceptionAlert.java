@@ -9,7 +9,17 @@ import javafx.scene.control.DialogPane;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 
+/**
+ * An {@link Alert} specialized to display exception stack traces.
+ */
 public class ExceptionAlert extends Alert {
+	/**
+	 * Construct a new object.
+	 * @param alertType the {@link AlertType} to be used.
+	 * @param exception the {@link Throwable} containing the stack trace.
+	 * @param windowTitle a title for the alert window.
+	 * @param buttons buttons to be used.
+	 */
 	public ExceptionAlert(AlertType alertType, Throwable exception, String windowTitle, ButtonType... buttons) {
 		super(alertType, "Exception", buttons);
 
@@ -25,6 +35,11 @@ public class ExceptionAlert extends Alert {
 		dialogPane.setContent(scrollPane);
 	}
 
+	/**
+	 * Print a stack trace into a string.
+	 * @param exception the {@link Throwable} containing the stack trace.
+	 * @return the string containing the stack trace.
+	 */
 	protected String printStackTrace(Throwable exception) {
 		StringWriter sw = new StringWriter();
 		PrintWriter pw = new PrintWriter(sw);

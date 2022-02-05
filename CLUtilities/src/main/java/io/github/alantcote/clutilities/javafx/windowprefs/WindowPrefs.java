@@ -8,26 +8,70 @@ import javafx.beans.value.ObservableValue;
 import javafx.stage.Stage;
 
 /**
- * Persistent application preferences.
+ * Persistent window geometry tracker.
  */
 public class WindowPrefs {
+	/**
+	 * Preference key for the full-screen preference.
+	 */
 	public static final String KEY_WINDOW_FULL_SCREEN = "WINDOW_FULL_SCREEN";
-	public static final String KEY_WINDOW_HEIGHT = "WINDOW_HEIGHT";
-	public static final String KEY_WINDOW_ICONIFIED = "WINDOW_ICONIFIED";
-	public static final String KEY_WINDOW_MAXIMIZED = "WINDOW_MAXIMIZED";
-	public static final String KEY_WINDOW_WIDTH = "WINDOW_WIDTH";
-	public static final String KEY_WINDOW_X = "WINDOW_X";
-	public static final String KEY_WINDOW_Y = "WINDOW_Y";
-
-	protected Class<?> clazz = null;
-	protected Preferences prefs = null;
-	protected Stage stage = null;
 
 	/**
+	 * Preference key for the window height preference.
+	 */
+	public static final String KEY_WINDOW_HEIGHT = "WINDOW_HEIGHT";
+
+	/**
+	 * Preference key for the iconified preference.
+	 */
+	public static final String KEY_WINDOW_ICONIFIED = "WINDOW_ICONIFIED";
+
+	/**
+	 * Preference key for the maximized preference.
+	 */
+	public static final String KEY_WINDOW_MAXIMIZED = "WINDOW_MAXIMIZED";
+
+	/**
+	 * Preference key for the window width preference.
+	 */
+	public static final String KEY_WINDOW_WIDTH = "WINDOW_WIDTH";
+
+	/**
+	 * Preference key for the window X-coordinate preference.
+	 */
+	public static final String KEY_WINDOW_X = "WINDOW_X";
+
+	/**
+	 * Preference key for the window Y-coordinate preference.
+	 */
+	public static final String KEY_WINDOW_Y = "WINDOW_Y";
+
+	/**
+	 * The class on behalf of which this object exists.
+	 */
+	protected Class<?> clazz = null;
+
+	/**
+	 * The {@link Preferences} node in which to store tracked preferences.
+	 */
+	protected Preferences prefs = null;
+
+	/**
+	 * The {@link Stage} whose geometry is tracked.
+	 */
+	protected Stage stage = null;
+
+	/*
 	 * Constructor.
 	 * 
 	 * @param aStage The app's @link(Stage).
 	 * @throws BackingStoreException if thrown by the underlying code.
+	 */
+	/**
+	 * Constructor.
+	 * @param aClazz the app's {@link Class}.
+	 * @param aStage the app's @link(Stage).
+	 * @throws BackingStoreException if {@link Preferences} throws one.
 	 */
 	public WindowPrefs(Class<?> aClazz, Stage aStage) throws BackingStoreException {
 		clazz = aClazz;
@@ -38,7 +82,8 @@ public class WindowPrefs {
 	}
 
 	/**
-	 * @return the prefs
+	 * Get {@link #prefs}.
+	 * @return {@link #prefs}.
 	 */
 	public Preferences getPrefs() {
 		return prefs;
@@ -200,13 +245,15 @@ public class WindowPrefs {
 	}
 
 	/**
-	 * @throws BackingStoreException
+	 * Call {@link #prefs}<code>.sync()</code>.
+	 * @throws BackingStoreException if the sync method throws one.
 	 */
 	protected void prefsSync() throws BackingStoreException {
 		prefs.sync();
 	}
 
 	/**
+	 * Get the user root {@link Preferences} node.
 	 * @return the user root {@link Preferences} node.
 	 */
 	protected Preferences userRoot() {

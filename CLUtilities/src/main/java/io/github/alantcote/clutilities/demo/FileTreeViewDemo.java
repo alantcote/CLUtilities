@@ -48,7 +48,7 @@ public class FileTreeViewDemo extends Application {
 
 			stageSetScene(primaryStage, scene);
 			stageSetTitle(primaryStage);
-			
+
 			stageSetOnShown(primaryStage);
 
 			stageShow(primaryStage);
@@ -83,7 +83,7 @@ public class FileTreeViewDemo extends Application {
 	protected FileTreeItem newFileTreeItem() {
 		return new FileTreeItem(null);
 	}
-	
+
 	/**
 	 * Factory for instances of {@link FileTreeView}.
 	 * 
@@ -116,7 +116,8 @@ public class FileTreeViewDemo extends Application {
 	}
 
 	/**
-	 * @param primaryStage
+	 * Establish {@link #windowPrefs} when the stage is shown.
+	 * @param primaryStage the {@link Stage}.
 	 */
 	protected void stageSetOnShown(Stage primaryStage) {
 		primaryStage.setOnShown(new EventHandler<WindowEvent>() {
@@ -131,27 +132,30 @@ public class FileTreeViewDemo extends Application {
 					System.err.println("FileTreeViewDemo.start(): continuing . . .");
 				}
 			}
-			
+
 		});
 	}
 
 	/**
-	 * @param primaryStage
-	 * @param scene
+	 * Set the {@link Scene} for a {@link Stage}.
+	 * @param primaryStage the {@link Stage}.
+	 * @param scene the {@link Scene}.
 	 */
 	protected void stageSetScene(Stage primaryStage, Scene scene) {
 		primaryStage.setScene(scene);
 	}
 
 	/**
-	 * @param primaryStage
+	 * Set the title for the {@link Stage}.
+	 * @param primaryStage the {@link Stage}.
 	 */
 	protected void stageSetTitle(Stage primaryStage) {
 		primaryStage.setTitle("File TreeView Demo");
 	}
 
 	/**
-	 * @param primaryStage
+	 * Show a {@link Stage}.
+	 * @param primaryStage the {@link Stage}.
 	 */
 	protected void stageShow(Stage primaryStage) {
 		primaryStage.show();

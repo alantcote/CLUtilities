@@ -6,16 +6,25 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.control.TreeCell;
 import javafx.scene.image.ImageView;
 
+/**
+ * A {@link TreeCell<File>} extended to understand {@link File} objects and to
+ * display system-authentic icons for them.
+ */
 public class FileTreeCell extends TreeCell<File> {
+	/**
+	 * A display name for the root of a file tree.
+	 */
 	public static final String SYNTH_ROOT_NAME = "Filesystems";
 
+	/**
+	 * A factory for platform-authentic file icons.
+	 */
 	protected FileIconFactory fileIconFactory;
 
 	/**
 	 * A tree cell for {@link File} objects.
 	 * 
-	 * @param aFileIconFactory a source for platform-authentic icon images that are
-	 *                         appropriate to files being represented.
+	 * @param aFileIconFactory a factory for platform-authentic file icons.
 	 */
 	public FileTreeCell(FileIconFactory aFileIconFactory) {
 		super();
@@ -24,16 +33,20 @@ public class FileTreeCell extends TreeCell<File> {
 	}
 
 	/**
-	 * @param item
-	 * @return
+	 * Get a presentable name for a file.
+	 * 
+	 * @param item the file.
+	 * @return the presentable name.
 	 */
 	protected String displayName(File item) {
 		return FileIconFactory.fileSystemView.getSystemDisplayName(item);
 	}
 
 	/**
-	 * @param item
-	 * @return
+	 * Get a platform-authentic icon for a file.
+	 * 
+	 * @param item the file.
+	 * @return the icon.
 	 */
 	protected ImageView getIconImage(File item) {
 		return fileIconFactory.getIcon(item);

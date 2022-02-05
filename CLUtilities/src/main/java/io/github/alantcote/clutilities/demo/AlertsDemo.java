@@ -24,6 +24,9 @@ import javafx.stage.WindowEvent;
  * An application to demo {@link FileTreeView}.
  */
 public class AlertsDemo extends Application {
+	/**
+	 * Default title for the application window.
+	 */
 	public static final String STAGE_TITLE = "Alerts Demo";
 
 	/**
@@ -35,6 +38,9 @@ public class AlertsDemo extends Application {
 		launch(args);
 	}
 
+	/**
+	 * Window geometry management.
+	 */
 	protected WindowPrefs windowPrefs = null;
 
 	/**
@@ -77,6 +83,8 @@ public class AlertsDemo extends Application {
 	}
 
 	/**
+	 * Manufacture a new {@link BorderPane}.
+	 * 
 	 * @return a new {@link BorderPane}.
 	 */
 	protected BorderPane newBorderPane() {
@@ -87,7 +95,7 @@ public class AlertsDemo extends Application {
 	 * Manufacture a new {@link Scene}.
 	 * 
 	 * @param root the root pane to wrap.
-	 * @return the new object.
+	 * @return a new {@link Scene}.
 	 */
 	protected Scene newScene(BorderPane root) {
 		return new Scene(root);

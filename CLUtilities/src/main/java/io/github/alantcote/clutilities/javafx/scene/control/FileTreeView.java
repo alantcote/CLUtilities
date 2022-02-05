@@ -33,8 +33,9 @@ public class FileTreeView extends TreeView<File> {
 	}
 
 	/**
-	 * @param fileIconFactory
-	 * @return
+	 * Manufacture a {@link FileTreeCellFactory} object.
+	 * @param fileIconFactory a factory for platform-authentic file icons.
+	 * @return the new object.
 	 */
 	protected FileTreeCellFactory newFileTreeCellFactory(FileIconFactory fileIconFactory) {
 		return new FileTreeCellFactory(fileIconFactory);

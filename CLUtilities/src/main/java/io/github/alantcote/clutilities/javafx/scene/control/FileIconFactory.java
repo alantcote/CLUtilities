@@ -18,7 +18,6 @@ import javafx.scene.image.WritableImage;
  * A caching provider of system-authentic icons for files.
  */
 public class FileIconFactory {
-
 	/**
 	 * A supplier of platform-authentic icons and such.
 	 */
@@ -76,18 +75,6 @@ public class FileIconFactory {
 	}
 
 	/**
-	 * @param fxImage
-	 * @return
-	 */
-	protected ImageView newImageView(Image fxImage) {
-		return new ImageView(fxImage);
-	}
-	
-	protected Image swingFXUtilsToFXImage(BufferedImage bImg, WritableImage wimg) {
-		return SwingFXUtils.toFXImage(bImg, wimg);
-	}
-
-	/**
 	 * Get an {@link ImageView} object corresponding to a {@link Icon} object.
 	 * 
 	 * The {@link #cache} is used and/or updated to accomplish this.
@@ -138,6 +125,30 @@ public class FileIconFactory {
 	 */
 	protected Hashtable<Icon, ImageView> newHashtable() {
 		return new Hashtable<Icon, ImageView>();
+	}
+
+	/**
+	 * Manufacture an {@link ImageView} from an {@link Image}.
+	 * 
+	 * @param fxImage the {@link Image}.
+	 * @return the {@link ImageView}.
+	 */
+	protected ImageView newImageView(Image fxImage) {
+		return new ImageView(fxImage);
+	}
+
+	/**
+	 * Snapshots the specified BufferedImage and stores a copy of its pixels into a
+	 * JavaFX Image object, creating a new object if needed.
+	 * 
+	 * @param bImg the BufferedImage object to be converted.
+	 * @param wimg an optional WritableImage object that can be used to store the
+	 *             returned pixel data.
+	 * @return an Image object representing a snapshot of the current pixels in the
+	 *         BufferedImage.
+	 */
+	protected Image swingFXUtilsToFXImage(BufferedImage bImg, WritableImage wimg) {
+		return SwingFXUtils.toFXImage(bImg, wimg);
 	}
 
 }

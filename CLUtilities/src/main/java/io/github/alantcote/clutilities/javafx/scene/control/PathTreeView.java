@@ -38,8 +38,9 @@ public class PathTreeView extends TreeView<Path> {
 	}
 
 	/**
-	 * @param pathIconFactory
-	 * @return
+	 * Manufacture a new {@link PathTreeCellFactory}.
+	 * @param pathIconFactory the {@link PathIconFactory} to use.
+	 * @return the new object.
 	 */
 	protected PathTreeCellFactory newPathTreeCellFactory(PathIconFactory pathIconFactory) {
 		return new PathTreeCellFactory(pathIconFactory);

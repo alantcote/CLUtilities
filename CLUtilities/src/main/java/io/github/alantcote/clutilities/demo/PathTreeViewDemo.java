@@ -28,6 +28,9 @@ public class PathTreeViewDemo extends Application {
 		launch(args);
 	}
 
+	/**
+	 * Persistent window geometry support.
+	 */
 	protected WindowPrefs windowPrefs = null;
 
 	/**
@@ -113,7 +116,8 @@ public class PathTreeViewDemo extends Application {
 	}
 
 	/**
-	 * @param primaryStage
+	 * Establish {@link #windowPrefs} when the stage is shown.
+	 * @param primaryStage the {@link Stage}.
 	 */
 	protected void stageSetOnShown(Stage primaryStage) {
 		primaryStage.setOnShown(new EventHandler<WindowEvent>() {
@@ -133,22 +137,25 @@ public class PathTreeViewDemo extends Application {
 	}
 
 	/**
-	 * @param primaryStage
-	 * @param scene
+	 * Set the {@link Scene} for a {@link Stage}.
+	 * @param primaryStage the {@link Stage}.
+	 * @param scene the {@link Scene}.
 	 */
 	protected void stageSetScene(Stage primaryStage, Scene scene) {
 		primaryStage.setScene(scene);
 	}
 
 	/**
-	 * @param primaryStage
+	 * Set the title for the {@link Stage}.
+	 * @param primaryStage the {@link Stage}.
 	 */
 	protected void stageSetTitle(Stage primaryStage) {
 		primaryStage.setTitle("Path TreeView Demo");
 	}
 
 	/**
-	 * @param primaryStage
+	 * Show a {@link Stage}.
+	 * @param primaryStage the {@link Stage}.
 	 */
 	protected void stageShow(Stage primaryStage) {
 		primaryStage.show();

@@ -1,3 +1,6 @@
+/**
+ * This module provides what (hopefully) are widely-useful utility classes.
+ */
 module clutilities {
 	exports io.github.alantcote.clutilities.demo;
 	exports io.github.alantcote.clutilities.javafx.scene.control;
@@ -10,6 +13,4 @@ module clutilities {
 	requires transitive javafx.swing;
 	requires javafx.base;
 	requires javafx.graphics;
-//	requires junit;
-//	requires mvvmfx.testing.utils;
 }

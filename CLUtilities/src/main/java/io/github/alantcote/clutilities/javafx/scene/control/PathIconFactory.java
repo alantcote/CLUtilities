@@ -8,6 +8,9 @@ import javafx.scene.image.ImageView;
  * A caching provider of system-authentic icons for paths.
  */
 public class PathIconFactory {
+	/**
+	 * A source for platform-authentic file icons.
+	 */
 	protected final FileIconFactory fileIconFactory;
 
 	/**
