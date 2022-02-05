@@ -10,6 +10,6 @@ module clutilities {
 	requires transitive javafx.swing;
 	requires javafx.base;
 	requires javafx.graphics;
-	requires junit;
+//	requires junit;
 //	requires mvvmfx.testing.utils;
 }
