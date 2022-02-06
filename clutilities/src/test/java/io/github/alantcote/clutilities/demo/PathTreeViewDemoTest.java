@@ -21,13 +21,13 @@ import javafx.stage.Stage;
  * Test case for {@link io.github.alantcote.clutilities.demo.PathTreeViewDemo}.
  */
 @RunWith(JfxRunner.class)
-class PathTreeViewDemoTest {
+public class PathTreeViewDemoTest {
 
 	/**
 	 * Test method for {@link io.github.alantcote.clutilities.demo.PathTreeViewDemo#main(java.lang.String[])}.
 	 */
 	@Test
-	void testMain() {
+	public void testMain() {
 		// Calls a static method in its superclass. I have no idea how to write
 		// a legitimate unit test class for that.
 	}
@@ -90,7 +90,7 @@ class PathTreeViewDemoTest {
 	 * Test method for {@link io.github.alantcote.clutilities.demo.PathTreeViewDemo#createPathTreeView()}.
 	 */
 	@Test
-	void testCreatePathTreeView() {
+	public void testCreatePathTreeView() {
 		final PathTreeItem pathTreeItem = new PathTreeItem(null);
 		final PathTreeView pathTreeView = new PathTreeView(pathTreeItem);
 		PathTreeViewDemo fixture = new PathTreeViewDemo() {
@@ -118,7 +118,7 @@ class PathTreeViewDemoTest {
 	 * Test method for {@link io.github.alantcote.clutilities.demo.PathTreeViewDemo#newBorderPane()}.
 	 */
 	@Test
-	void testNewBorderPane() {
+	public void testNewBorderPane() {
 		final PathTreeViewDemo fixture = new PathTreeViewDemo();
 
 		assertNotNull(fixture.newBorderPane());
@@ -128,7 +128,7 @@ class PathTreeViewDemoTest {
 	 * Test method for {@link io.github.alantcote.clutilities.demo.PathTreeViewDemo#newPathTreeItem()}.
 	 */
 	@Test
-	void testNewPathTreeItem() {
+	public void testNewPathTreeItem() {
 		final PathTreeViewDemo fixture = new PathTreeViewDemo();
 
 		assertNotNull(fixture.newPathTreeItem());
@@ -138,7 +138,7 @@ class PathTreeViewDemoTest {
 	 * Test method for {@link io.github.alantcote.clutilities.demo.PathTreeViewDemo#newPathTreeView(javafx.scene.control.TreeItem)}.
 	 */
 	@Test
-	void testNewPathTreeView() {
+	public void testNewPathTreeView() {
 		final PathTreeViewDemo fixture = new PathTreeViewDemo();
 		final TreeItem<Path> pathTreeItem = new PathTreeItem(null);
 
@@ -149,7 +149,7 @@ class PathTreeViewDemoTest {
 	 * Test method for {@link io.github.alantcote.clutilities.demo.PathTreeViewDemo#newScene(javafx.scene.layout.BorderPane)}.
 	 */
 	@Test
-	void testNewScene() {
+	public void testNewScene() {
 		final PathTreeViewDemo fixture = new PathTreeViewDemo();
 		final BorderPane borderPane = new BorderPane();
 
@@ -160,7 +160,7 @@ class PathTreeViewDemoTest {
 	 * Test method for {@link io.github.alantcote.clutilities.demo.PathTreeViewDemo#populatePathTreeViewPane(javafx.scene.layout.BorderPane)}.
 	 */
 	@Test
-	void testPopulatePathTreeViewPane() {
+	public void testPopulatePathTreeViewPane() {
 		final PathTreeItem pathTreeItem = new PathTreeItem(null);
 		final TreeView<Path> treeView = new PathTreeView(pathTreeItem);
 		final BorderPane borderPane = new BorderPane();
@@ -182,32 +182,60 @@ class PathTreeViewDemoTest {
 	 * Test method for {@link io.github.alantcote.clutilities.demo.PathTreeViewDemo#stageSetOnShown(javafx.stage.Stage)}.
 	 */
 	@Test
-	void testStageSetOnShown() {
-		fail("Not yet implemented");
+	@TestInJfxThread
+	public void testStageSetOnShown() {
+		final PathTreeViewDemo fixture = new PathTreeViewDemo();
+		Stage stage = new Stage();
+		
+		fixture.stageSetOnShown(stage);
+		
+		assertNotNull(stage.getOnShown());
 	}
 
 	/**
 	 * Test method for {@link io.github.alantcote.clutilities.demo.PathTreeViewDemo#stageSetScene(javafx.stage.Stage, javafx.scene.Scene)}.
 	 */
 	@Test
-	void testStageSetScene() {
-		fail("Not yet implemented");
+	@TestInJfxThread
+	public void testStageSetScene() {
+		final PathTreeViewDemo fixture = new PathTreeViewDemo();
+		Stage stage = new Stage();
+		BorderPane borderPane = new BorderPane();
+		Scene scene = new Scene(borderPane);
+		
+		fixture.stageSetScene(stage, scene);
+		
+		assertTrue(scene == stage.getScene());
 	}
 
 	/**
 	 * Test method for {@link io.github.alantcote.clutilities.demo.PathTreeViewDemo#stageSetTitle(javafx.stage.Stage)}.
 	 */
 	@Test
-	void testStageSetTitle() {
-		fail("Not yet implemented");
+	@TestInJfxThread
+	public void testStageSetTitle() {
+		final PathTreeViewDemo fixture = new PathTreeViewDemo();
+		Stage stage = new Stage();
+		
+		fixture.stageSetTitle(stage);
+		
+		assertEquals("Path TreeView Demo", stage.getTitle());
 	}
 
 	/**
 	 * Test method for {@link io.github.alantcote.clutilities.demo.PathTreeViewDemo#stageShow(javafx.stage.Stage)}.
 	 */
 	@Test
-	void testStageShow() {
-		fail("Not yet implemented");
+	@TestInJfxThread
+	public void testStageShow() {
+		// the solution in the comments below passes, but results in opening a
+		// window during test. commented out because it's not cool to pop up UI
+		// artifacts during a unit test and the stageShow() method is so trivial
+		// that it's hard to imagine a way it could go wrong.
+//		final PathTreeViewDemo fixture = new PathTreeViewDemo();
+//		Stage stage = new Stage();
+//		
+//		fixture.stageShow(stage);
 	}
 
 }
