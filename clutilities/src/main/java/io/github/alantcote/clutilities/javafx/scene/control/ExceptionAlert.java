@@ -41,14 +41,49 @@ public class ExceptionAlert extends Alert {
 	 * @return the string containing the stack trace.
 	 */
 	protected String printStackTrace(Throwable exception) {
-		StringWriter sw = new StringWriter();
-		PrintWriter pw = new PrintWriter(sw);
+		StringWriter sw = newStringWriter();
+		PrintWriter pw = newPrintWriter(sw);
 
 		exception.printStackTrace(pw);
 		pw.close();
 
-		String stackTrace = new String(sw.getBuffer());
+		String stackTrace = newString(getBuffer(sw));
 
 		return stackTrace;
+	}
+
+	/**
+	 * Create a new {@link StringWriter}.
+	 * @return the new object.
+	 */
+	protected StringWriter newStringWriter() {
+		return new StringWriter();
+	}
+
+	/**
+	 * Wrap a {@link PrintWriter} around a {@link StringWriter}.
+	 * @param sw a {@link StringWriter}.
+	 * @return the {@link PrintWriter}.
+	 */
+	protected PrintWriter newPrintWriter(StringWriter sw) {
+		return new PrintWriter(sw);
+	}
+
+	/**
+	 * Get the buffer from a {@link StringWriter}.
+	 * @param sw a {@link StringWriter}.
+	 * @return the buffer.
+	 */
+	protected StringBuffer getBuffer(StringWriter sw) {
+		return sw.getBuffer();
+	}
+	
+	/**
+	 * Get the {@link String} value of a {@link StringBuffer}.
+	 * @param sb a {@link StringBuffer}.
+	 * @return the {@link String} value.
+	 */
+	protected String newString(StringBuffer sb) {
+		return new String(sb);
 	}
 }
