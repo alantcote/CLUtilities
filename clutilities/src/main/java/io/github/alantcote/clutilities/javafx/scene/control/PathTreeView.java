@@ -1,6 +1,3 @@
-/**
- * 
- */
 package io.github.alantcote.clutilities.javafx.scene.control;
 
 import java.nio.file.Path;
