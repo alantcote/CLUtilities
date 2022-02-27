@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>io.github.alantcote</groupId>
-	<artifactId>clutilities</artifactId>
+	<artifactId>fxutilities</artifactId>
 	<version>0.2.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
@@ -57,7 +57,7 @@
 
 	<issueManagement>
 		<system>GitHub Issues</system>
-		<url>https://github.com/alantcote/CLUtilities/issues</url>
+		<url>https://github.com/alantcote/fxutilities/issues</url>
 	</issueManagement>
 
 	<repositories>
