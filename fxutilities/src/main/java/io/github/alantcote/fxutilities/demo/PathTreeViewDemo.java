@@ -35,6 +35,8 @@ public class PathTreeViewDemo extends Application {
 
 	/**
 	 * {@inheritDoc}
+	 * 
+	 * Set it up and show it.
 	 */
 	@Override
 	public void start(Stage primaryStage) {

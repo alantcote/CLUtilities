@@ -157,6 +157,7 @@ public class WindowPrefs {
 			@Override
 			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
 				prefs.putBoolean(KEY_WINDOW_FULL_SCREEN, newValue);
+				System.out.println(KEY_WINDOW_FULL_SCREEN + " old=" + oldValue + " new=" + newValue);
 
 				try {
 					prefsSync();
@@ -180,6 +181,7 @@ public class WindowPrefs {
 			@Override
 			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
 				prefs.putBoolean(KEY_WINDOW_ICONIFIED, newValue);
+				System.out.println(KEY_WINDOW_ICONIFIED + " old=" + oldValue + " new=" + newValue);
 
 				try {
 					prefsSync();
@@ -203,6 +205,7 @@ public class WindowPrefs {
 			@Override
 			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
 				prefs.putBoolean(KEY_WINDOW_MAXIMIZED, newValue);
+				System.out.println(KEY_WINDOW_MAXIMIZED + " old=" + oldValue + " new=" + newValue);
 
 				try {
 					prefsSync();
@@ -231,7 +234,7 @@ public class WindowPrefs {
 	 * @return a new object.
 	 */
 	protected MetricListener newMetricListener(String aKey) {
-		return new MetricListener(prefs, aKey);
+		return new MetricListener(prefs, aKey, stage);
 	}
 
 	/**

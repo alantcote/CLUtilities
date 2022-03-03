@@ -5,12 +5,17 @@ import static org.junit.Assert.*;
 import java.util.prefs.Preferences;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
+import de.saxsys.mvvmfx.testingutils.jfxrunner.JfxRunner;
+import de.saxsys.mvvmfx.testingutils.jfxrunner.TestInJfxThread;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.stage.Stage;
 
 /**
  * Test case for {@link MetricListener}.
  */
+@RunWith(JfxRunner.class)
 public class MetricListenerTest {
 	public static final String KEY = "preference";
 	public static final Preferences NODE = Preferences.userRoot();
@@ -20,10 +25,12 @@ public class MetricListenerTest {
 	 * {@link MetricListener#changed(javafx.beans.value.ObservableValue, java.lang.Number, java.lang.Number)}.
 	 */
 	@Test
+	@TestInJfxThread
 	public void testChanged() {
 		final SimpleIntegerProperty ppdCount = new SimpleIntegerProperty(0);
 		final SimpleIntegerProperty psCount = new SimpleIntegerProperty(0);
-		MetricListener fixture = new MetricListener(NODE, KEY) {
+		Stage testStage = new Stage();
+		MetricListener fixture = new MetricListener(NODE, KEY, testStage) {
 			@Override
 			protected void prefsPutDouble(double newValue) {
 				ppdCount.set(1 + ppdCount.get());
@@ -46,11 +53,14 @@ public class MetricListenerTest {
 	 * {@link MetricListener#MetricListener(java.util.prefs.Preferences, java.lang.String)}.
 	 */
 	@Test
+	@TestInJfxThread
 	public void testMetricListener() {
-		MetricListener fixture = new MetricListener(NODE, KEY);
+		Stage testStage = new Stage();
+		MetricListener fixture = new MetricListener(NODE, KEY, testStage);
 
 		assertEquals(NODE, fixture.prefs);
 		assertEquals(KEY, fixture.key);
+		assertEquals(testStage, fixture.window);
 	}
 
 	/**
