@@ -10,7 +10,6 @@ import org.junit.runner.RunWith;
 import de.saxsys.mvvmfx.testingutils.jfxrunner.JfxRunner;
 import de.saxsys.mvvmfx.testingutils.jfxrunner.TestInJfxThread;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.stage.Stage;
 
 /**
  * Test case for {@link MetricListener}.
@@ -29,8 +28,8 @@ public class MetricListenerTest {
 	public void testChanged() {
 		final SimpleIntegerProperty ppdCount = new SimpleIntegerProperty(0);
 		final SimpleIntegerProperty psCount = new SimpleIntegerProperty(0);
-		Stage testStage = new Stage();
-		MetricListener fixture = new MetricListener(NODE, KEY, testStage) {
+		DelayedJobJar testDelayedJobJar = new DelayedJobJar();
+		MetricListener fixture = new MetricListener(NODE, KEY, testDelayedJobJar) {
 			@Override
 			protected void prefsPutDouble(double newValue) {
 				ppdCount.set(1 + ppdCount.get());
@@ -44,8 +43,9 @@ public class MetricListenerTest {
 
 		fixture.changed(null, 0, 1);
 
-		assertEquals(1, ppdCount.get());
-		assertEquals(1, psCount.get());
+		assertEquals(1, fixture.valueToSet);
+		assertEquals(0, ppdCount.get());
+		assertEquals(0, psCount.get());
 	}
 
 	/**
@@ -55,12 +55,12 @@ public class MetricListenerTest {
 	@Test
 	@TestInJfxThread
 	public void testMetricListener() {
-		Stage testStage = new Stage();
-		MetricListener fixture = new MetricListener(NODE, KEY, testStage);
+		DelayedJobJar testDelayedJobJar = new DelayedJobJar();
+		MetricListener fixture = new MetricListener(NODE, KEY, testDelayedJobJar);
 
 		assertEquals(NODE, fixture.prefs);
 		assertEquals(KEY, fixture.key);
-		assertEquals(testStage, fixture.window);
+		assertEquals(testDelayedJobJar, fixture.delayedJobJar);
 	}
 
 	/**

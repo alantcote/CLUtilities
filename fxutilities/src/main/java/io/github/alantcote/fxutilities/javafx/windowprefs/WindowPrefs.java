@@ -50,6 +50,11 @@ public class WindowPrefs {
 	 * The class on behalf of which this object exists.
 	 */
 	protected Class<?> clazz = null;
+	
+	/**
+	 * The delayed task dispatcher.
+	 */
+	protected DelayedJobJar delayedJobJar;
 
 	/**
 	 * The {@link Preferences} node in which to store tracked preferences.
@@ -146,73 +151,52 @@ public class WindowPrefs {
 
 		stage.yProperty().addListener(newMetricListener(KEY_WINDOW_Y));
 
-		if (prefs.get(KEY_WINDOW_FULL_SCREEN, "XXX").equals("XXX")) {
-			prefs.putBoolean(KEY_WINDOW_FULL_SCREEN, stage.isFullScreen());
-		} else {
-			stage.setFullScreen(prefs.getBoolean(KEY_WINDOW_FULL_SCREEN, false));
-		}
+//		if (prefs.get(KEY_WINDOW_FULL_SCREEN, "XXX").equals("XXX")) {
+//			prefs.putBoolean(KEY_WINDOW_FULL_SCREEN, stage.isFullScreen());
+//		} else {
+//			stage.setFullScreen(prefs.getBoolean(KEY_WINDOW_FULL_SCREEN, false));
+//		}
 
 		stage.fullScreenProperty().addListener(new ChangeListener<Boolean>() {
 
 			@Override
 			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-				prefs.putBoolean(KEY_WINDOW_FULL_SCREEN, newValue);
-				System.out.println(KEY_WINDOW_FULL_SCREEN + " old=" + oldValue + " new=" + newValue);
-
-				try {
-					prefsSync();
-				} catch (BackingStoreException e) {
-					System.err.println("AppPrefs.inizGeometryPrefs(): full screen listener caught . . .");
-					e.printStackTrace();
-					System.err.println("AppPrefs.inizGeometryPrefs(): proceeding.");
+				if (newValue) {
+					delayedJobJar.clear();
 				}
 			}
 			
 		});
 
-		if (prefs.get(KEY_WINDOW_ICONIFIED, "XXX").equals("XXX")) {
-			prefs.putBoolean(KEY_WINDOW_ICONIFIED, stage.isIconified());
-		} else {
-			stage.setIconified(prefs.getBoolean(KEY_WINDOW_ICONIFIED, false));
-		}
+//		if (prefs.get(KEY_WINDOW_ICONIFIED, "XXX").equals("XXX")) {
+//			prefs.putBoolean(KEY_WINDOW_ICONIFIED, stage.isIconified());
+//		} else {
+//			stage.setIconified(prefs.getBoolean(KEY_WINDOW_ICONIFIED, false));
+//		}
 
 		stage.iconifiedProperty().addListener(new ChangeListener<Boolean>() {
 
 			@Override
 			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-				prefs.putBoolean(KEY_WINDOW_ICONIFIED, newValue);
-				System.out.println(KEY_WINDOW_ICONIFIED + " old=" + oldValue + " new=" + newValue);
-
-				try {
-					prefsSync();
-				} catch (BackingStoreException e) {
-					System.err.println("AppPrefs.inizGeometryPrefs(): iconified listener caught . . .");
-					e.printStackTrace();
-					System.err.println("AppPrefs.inizGeometryPrefs(): proceeding.");
+				if (newValue) {
+					delayedJobJar.clear();
 				}
 			}
 			
 		});
 
-		if (prefs.get(KEY_WINDOW_MAXIMIZED, "XXX").equals("XXX")) {
-			prefs.putBoolean(KEY_WINDOW_MAXIMIZED, stage.isMaximized());
-		} else {
-			stage.setMaximized(prefs.getBoolean(KEY_WINDOW_MAXIMIZED, false));
-		}
+//		if (prefs.get(KEY_WINDOW_MAXIMIZED, "XXX").equals("XXX")) {
+//			prefs.putBoolean(KEY_WINDOW_MAXIMIZED, stage.isMaximized());
+//		} else {
+//			stage.setMaximized(prefs.getBoolean(KEY_WINDOW_MAXIMIZED, false));
+//		}
 
 		stage.maximizedProperty().addListener(new ChangeListener<Boolean>() {
 
 			@Override
 			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-				prefs.putBoolean(KEY_WINDOW_MAXIMIZED, newValue);
-				System.out.println(KEY_WINDOW_MAXIMIZED + " old=" + oldValue + " new=" + newValue);
-
-				try {
-					prefsSync();
-				} catch (BackingStoreException e) {
-					System.err.println("AppPrefs.inizGeometryPrefs(): maximized listener caught . . .");
-					e.printStackTrace();
-					System.err.println("AppPrefs.inizGeometryPrefs(): proceeding.");
+				if (newValue) {
+					delayedJobJar.clear();
 				}
 			}
 			
@@ -234,7 +218,7 @@ public class WindowPrefs {
 	 * @return a new object.
 	 */
 	protected MetricListener newMetricListener(String aKey) {
-		return new MetricListener(prefs, aKey, stage);
+		return new MetricListener(prefs, aKey, delayedJobJar);
 	}
 
 	/**

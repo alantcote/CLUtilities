@@ -5,13 +5,17 @@ import java.util.prefs.Preferences;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.stage.Stage;
 
 /**
  * A {@link ChangeListener} that applies changes to a {@link Preferences}
  * preference with a given key.
  */
-public class MetricListener implements ChangeListener<Number> {
+public class MetricListener implements ChangeListener<Number>, Runnable {
+	/**
+	 * The task dispatcher.
+	 */
+	protected DelayedJobJar delayedJobJar = null;
+	
 	/**
 	 * The preference key.
 	 */
@@ -23,37 +27,35 @@ public class MetricListener implements ChangeListener<Number> {
 	protected Preferences prefs = null;
 	
 	/**
-	 * The window that owns the metric.
+	 * Storage for the new value to be set in {@link #run()}.
 	 */
-	protected Stage window = null;
+	protected Number valueToSet = 0;
+	
+//	/**
+//	 * The window that owns the metric.
+//	 */
+//	protected Stage window = null;
 
 	/**
 	 * Construct a new object.
 	 * 
 	 * @param aPrefs the {@link Preferences} node to update.
 	 * @param aKey   the preference key.
-	 * @param stage the window that owns the metric.
+	 * @param dispatcher the dispatcher for tasks.
 	 */
-	public MetricListener(Preferences aPrefs, String aKey, Stage stage) {
+	public MetricListener(Preferences aPrefs, String aKey, DelayedJobJar dispatcher) {
 		prefs = aPrefs;
 		key = aKey;
-		window = stage;
+		delayedJobJar = dispatcher;
 	}
 
 	/**
 	 * {@inheritDoc} This method updates the preference to reflect the new value.
 	 */
 	public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-		boolean fullScreen = window.isFullScreen();
-		boolean iconified = window.isIconified();
-		boolean maximized = window.isMaximized();
+		valueToSet = newValue;
 		
-		if (!(fullScreen || iconified || maximized)) {
-			prefsPutDouble(newValue.doubleValue());
-			System.out.println(key + " old=" + oldValue + " new=" + newValue);
-
-			prefsSync();
-		}
+		delayedJobJar.add(this);
 	}
 
 	/**
@@ -76,5 +78,12 @@ public class MetricListener implements ChangeListener<Number> {
 			e.printStackTrace();
 			System.err.println("AppPrefs.MetricListener.prefsSync(): proceeding anyway.");
 		}
+	}
+
+	@Override
+	public void run() {
+		prefsPutDouble(valueToSet.doubleValue());
+
+		prefsSync();
 	}
 }
